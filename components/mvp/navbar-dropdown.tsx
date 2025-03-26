@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { EllipsisVertical } from 'lucide-react';
 import Link from 'next/link';
 import { FiUser } from 'react-icons/fi';
-import ThemeSwitch from '@/components/theme-switch';
+import ThemeSwitch from '@/components/mvp/theme-switch';
 
 export default function NavbarDropdown() {
   return (

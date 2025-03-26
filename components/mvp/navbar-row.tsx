@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ThemeCheck from '@/components/theme-check';
+import ThemeCheck from '@/components/mvp/theme-check';
 import { FiUser } from 'react-icons/fi';
 import { Separator } from '@/components/ui/separator';
 
