@@ -39,10 +39,10 @@ export default function SnippetInfoView() {
       <SnippetVersion />
       <div>
         <p className="py-2 px-4 flex bg-input">
-          <p className="ml-auto flex items-center gap-2">
+          <span className="ml-auto flex items-center gap-2">
             <span className="h-2 w-2 inline-block bg-yellow-400 rounded-full"></span>
             <span className="capitalize">javascript</span>
-          </p>
+          </span>
           <Button
             variant="outline"
             className="py-0 px-4 h-auto ml-auto rounded-full cursor-pointer capitalize"

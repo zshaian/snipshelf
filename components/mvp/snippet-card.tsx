@@ -9,7 +9,7 @@ export default function SnippetCard() {
     <div className="border border-input rounded-lg">
       <div className="p-4 flex flex-col gap-2">
         <Link
-          href="#"
+          href="/mvp/snippets/view"
           className="text-lg font-bold capitalize hover:underline text-blue-400"
         >
           shuffle array

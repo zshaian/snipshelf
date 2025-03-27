@@ -4,7 +4,7 @@ import Editor from '@monaco-editor/react';
 
 export default function CodeEditor() {
   return (
-    <div className="flex-1 w-full">
+    <div className="flex-1 w-full overflow-hidden">
       <Editor
         theme="vs-dark"
         defaultLanguage="javascript"
