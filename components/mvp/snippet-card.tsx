@@ -1,7 +1,6 @@
 import { IoShareSocialOutline } from 'react-icons/io5';
 import { CiBookmark } from 'react-icons/ci';
 import { Button } from '@/components/ui/button';
-import { Separator } from '../ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -40,7 +39,6 @@ export default function SnippetCard() {
               <CiBookmark />
               <span>bookmark</span>
             </Button>
-            <Separator orientation="vertical" />
             <Button
               className="flex gap-2 rounded-none capitalize cursor-pointer"
               variant="ghost"
