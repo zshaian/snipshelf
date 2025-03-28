@@ -139,12 +139,15 @@ export default function CreateSnippetForm() {
               inputTagContainerElement: 'font-[inherit]',
               inputTagListContainerElement: '!p-4 !border !border-input !gap-2',
               inputTagTagItemElement: '!bg-input/30 !py-0 border border-input',
-              inputTagTagRemoveBtnElement: 'text-sm',
+              inputTagTagContentElement: '!text-foreground',
+              inputTagTagRemoveBtnElement: 'text-sm !text-foreground',
             }}
             value={snippetTags}
             onChange={setSnippetTags}
             maxTags={5}
+            maxTagsValue={25}
             theme="theme-1"
+            separator="Space"
           />
           <div className="flex gap-2">
             <Button
