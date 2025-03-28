@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { InputTag } from 'react-tagit';
 import { z } from 'zod';
 import {
   Form,
@@ -22,6 +23,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 const CreateSnippetFormSchema = z.object({
   title: z.string().nonempty('Title is required.'),
@@ -31,6 +33,7 @@ const CreateSnippetFormSchema = z.object({
 });
 
 export default function CreateSnippetForm() {
+  const [snippetTags, setSnippetTags] = useState<Array<string>>([]);
   const form = useForm<z.infer<typeof CreateSnippetFormSchema>>({
     resolver: zodResolver(CreateSnippetFormSchema),
     defaultValues: {
@@ -128,6 +131,20 @@ export default function CreateSnippetForm() {
                 </span>
               </FormItem>
             )}
+          />
+          {/* snippet tags */}
+          <InputTag
+            customClass={{
+              inputTagLabelElement: 'font-[inherit]',
+              inputTagContainerElement: 'font-[inherit]',
+              inputTagListContainerElement: '!p-4 !border !border-input !gap-2',
+              inputTagTagItemElement: '!bg-input/30 !py-0 border border-input',
+              inputTagTagRemoveBtnElement: 'text-sm',
+            }}
+            value={snippetTags}
+            onChange={setSnippetTags}
+            maxTags={5}
+            theme="theme-1"
           />
           <div className="flex gap-2">
             <Button
