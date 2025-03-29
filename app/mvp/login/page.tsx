@@ -13,8 +13,8 @@ export default function Login() {
             width={60}
             className="rounded-full"
           />
-          <h1 className="text-4xl font-bold uppercase">log in</h1>
-          <p className="text-base text-center font-light">
+          <h1 className="text-4xl font-bold uppercase text-white">log in</h1>
+          <p className="text-base text-center font-light text-white">
             Log in today and start creating, showcasing, and sharing your
             amazing code snippets with the world!
           </p>
