@@ -8,6 +8,7 @@ export default function CodeEditor() {
       <Editor
         theme="vs-dark"
         defaultLanguage="javascript"
+        options={{ fontSize: 16 }}
         defaultValue={`class Person {
     constructor(name,lastName){
         this.firstName = name;

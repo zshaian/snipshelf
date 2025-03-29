@@ -12,7 +12,7 @@ export default function CodeEditorReadOnly() {
         defaultValue={`function sayName(name){
     console.log(\`hello \${name}\`);
 }`}
-        options={{ readOnly: true }}
+        options={{ readOnly: true, fontSize: 16 }}
       />
     </div>
   );
