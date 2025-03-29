@@ -57,7 +57,11 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" variant="default" className="uppercase">
+        <Button
+          type="submit"
+          variant="default"
+          className="uppercase cursor-pointer"
+        >
           login
         </Button>
         <div
