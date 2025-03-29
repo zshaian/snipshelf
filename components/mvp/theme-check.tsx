@@ -1,14 +1,24 @@
 'use client';
 
-import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
+import { MdOutlineWbSunny } from 'react-icons/md';
+import { LuMoon } from 'react-icons/lu';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { useTheme } from 'next-themes';
+
 export default function ThemeCheck() {
   const { systemTheme, theme, setTheme } = useTheme();
+  const isDarkMode =
+    theme === 'system'
+      ? systemTheme === 'dark'
+        ? true
+        : false
+      : theme === 'dark'
+        ? true
+        : false;
 
   const handleToggleDarkMode = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(isDarkMode ? 'light' : 'dark');
   };
 
   return (
@@ -18,19 +28,9 @@ export default function ThemeCheck() {
         onCheckedChange={handleToggleDarkMode}
         className="hidden"
       />
-      <Label htmlFor="theme-check">
+      <Label htmlFor="theme-check" className="cursor-pointer">
         <span className="text-base font-bold">
-          {theme === ' system' ? (
-            systemTheme === 'dark' ? (
-              <IoSunnyOutline />
-            ) : (
-              <IoMoonOutline />
-            )
-          ) : theme === 'dark' ? (
-            <IoSunnyOutline />
-          ) : (
-            <IoMoonOutline />
-          )}
+          {isDarkMode ? <MdOutlineWbSunny /> : <LuMoon />}
         </span>
         <span className="sr-only">toggle dark mode</span>
       </Label>

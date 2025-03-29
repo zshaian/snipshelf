@@ -6,23 +6,24 @@ import { Label } from '@/components/ui/label';
 
 export default function ThemeSwitch() {
   const { systemTheme, theme, setTheme } = useTheme();
+  const isDarkMode =
+    theme === 'system'
+      ? systemTheme === 'dark'
+        ? true
+        : false
+      : theme === 'dark'
+        ? true
+        : false;
+
   const handleToggleDarkMode = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(isDarkMode ? 'light' : 'dark');
   };
 
   return (
     <>
       <Switch
         id="dark-mode-toggle"
-        checked={
-          theme === 'system'
-            ? systemTheme === 'dark'
-              ? true
-              : false
-            : theme === 'dark'
-              ? true
-              : false
-        }
+        checked={isDarkMode}
         onCheckedChange={handleToggleDarkMode}
       />
       <Label htmlFor="dark-mode-toggle" className="capitalize">
