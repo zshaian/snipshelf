@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 
 export default function NavbarRow() {
   return (
-    <section className="flex space-x-2 h-5 max-lg:hidden">
+    <section className="space-x-2 h-5 hidden lg:flex">
       <ThemeCheck />
       <Separator orientation="vertical" />
       <Link href="#" className="flex items-center gap-2">

@@ -10,13 +10,13 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const path = usePathname();
   return (
-    <nav className="w-full py-2 px-4 flex items-center bg-white/50 dark:bg-black/50 justify-between overflow-hidden border-b border-dashed border-zinc-400/20 backdrop-blur-md">
+    <nav className="w-full py-2 px-4 flex items-center justify-between border-b border-dashed border-zinc-400/20">
       <section className="flex items-center gap-3">
         <Image
           src="/images/logo_md.svg"
           alt=""
-          height={30}
-          width={30}
+          height={60}
+          width={60}
           className="rounded-full"
         />
         <p className="uppercase font-bold">snipshelf</p>
