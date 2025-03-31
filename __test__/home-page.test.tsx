@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Home from '@/app/page';
-
+// test message
 // TODO: Fix the error, where accessing jest DOM matchers is not working.
 describe('Home Component', () => {
   it('renders the title correctly', () => {
