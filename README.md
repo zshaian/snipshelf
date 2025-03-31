@@ -4,6 +4,14 @@
 
 A simple web application for creating, showcasing, and sharing code snippets.
 
+```
+This project is under development, if you want to contribute, or collaborate on building
+the project, feel free to view the design file, and join us in discord.
+```
+
+[Design File](https://www.figma.com/design/9TDf4WILFZgTLE8QnjzReO/snippets?node-id=4-71&t=CLPFJOFxpduuhV9t-1)
+[Discord Server](https://discord.gg/Tm76EqwJQB)
+
 ## Prerequisites
 
 - Node.js (v18 or higher)
