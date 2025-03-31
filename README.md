@@ -1,5 +1,7 @@
 # SnipShelf
 
+![banner](./public/images/banner.png)
+
 A simple web application for creating, showcasing, and sharing code snippets.
 
 ## Prerequisites
