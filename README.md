@@ -45,7 +45,7 @@ pnpm lint
 pnpm format
 ```
 
-## Buid
+## Build
 
 ```bash
 # create production build
