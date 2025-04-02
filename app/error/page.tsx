@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Suspense } from 'react';
 
 /**
  * Error name base on auth error query parameters
@@ -12,7 +13,7 @@ import { cn } from '@/lib/utils';
  */
 type Error = 'Configuration' | 'AccessDenied' | 'Verification' | 'Default';
 
-export default function AuthErrorPage() {
+function AuthErrorContent() {
   const search = useSearchParams();
   const error = search.get('error') as Error;
 
@@ -43,5 +44,13 @@ export default function AuthErrorPage() {
         back to login
       </Link>
     </main>
+  );
+}
+
+export default function AuthErrorPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AuthErrorContent />
+    </Suspense>
   );
 }
