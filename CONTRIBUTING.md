@@ -43,11 +43,11 @@ Here is a quick guide on how to setup snipshelf locally to work on it and test o
    cd snipshelf
    ```
 
-2. Set up the correct pnpm version, using [Corepack](https://github.com/nodejs/corepack). Run the following command in the project'a root:
+2. Set up the correct pnpm version, using [Corepack](https://github.com/nodejs/corepack). Run the following command in the project's root:
 
    ```bash
    corepack enable
-   corepack prepare pnpm@10.7 --activate
+   corepack prepare pnpm@10.7.0 --activate
    ```
 
 3. Install dependencies:
