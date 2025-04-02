@@ -11,7 +11,13 @@ const nextConfig: NextConfig = {
         port: '',
         search: '?v=4',
       },
-      // TODO: implement the remote pattern for images on google
+      // remote pattern for images in google
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        search: '',
+      },
     ],
   },
 };

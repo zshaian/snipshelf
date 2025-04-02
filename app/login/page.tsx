@@ -1,7 +1,7 @@
 import LoginForm from '@/components/login/form';
 import HeroMessage from '@/components/login/hero-message';
 import { OAuthLoginProvider } from '@/components/login/oauth-login-provider';
-// import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import { FiGithub } from 'react-icons/fi';
 
 export default function LoginPage() {
@@ -19,8 +19,7 @@ export default function LoginPage() {
           </div>
           <div className="flex items-center justify-center">
             <OAuthLoginProvider providerName="github" ProviderIcon={FiGithub} />
-            {/* TODO: Set up google OAuth */}
-            {/* <OAuthLoginProvider providerName="google" ProviderIcon={FaGoogle} /> */}
+            <OAuthLoginProvider providerName="google" ProviderIcon={FaGoogle} />
           </div>
         </section>
       </main>
