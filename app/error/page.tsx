@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Suspense } from 'react';
+import AuthenticationError from '@/components/skeleton/authentication-error';
 
 /**
  * Error name base on auth error query parameters
@@ -26,8 +27,10 @@ function AuthErrorContent() {
         width={120}
         className="rounded-full"
       />
-      <h1 className="uppercase text-4xl font-black">authentication error</h1>
-      <p className="capitalize space-x-2">
+      <h1 className="p-4 uppercase text-4xl text-center font-black">
+        authentication error
+      </h1>
+      <p className="max-w-3xl p-4 capitalize text-center space-x-2">
         <span>
           there was a problem when trying to authenticate. please contact us if
           this error persist. unique error code
@@ -55,7 +58,7 @@ function AuthErrorContent() {
 
 export default function AuthErrorPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<AuthenticationError />}>
       <AuthErrorContent />
     </Suspense>
   );

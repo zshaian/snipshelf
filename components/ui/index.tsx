@@ -78,3 +78,5 @@ export {
   DrawerTitle,
   DrawerDescription,
 } from '@/components/ui/drawer';
+
+export { Skeleton } from '@/components/ui/skeleton';
