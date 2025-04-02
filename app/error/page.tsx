@@ -27,11 +27,17 @@ function AuthErrorContent() {
         className="rounded-full"
       />
       <h1 className="uppercase text-4xl font-black">authentication error</h1>
-      <p className="capitalize">
-        there was a problem when trying to authenticate. please contact us if
-        this error persist. unique error code
+      <p className="capitalize space-x-2">
+        <span>
+          there was a problem when trying to authenticate. please contact us if
+          this error persist. unique error code
+        </span>
         {/* if the value of the error is default change it to something more meaningful */}
-        <code>{error === 'Default' ? 'Something went wrong' : error}</code>
+        {error && (
+          <code className="py-1 px-2 bg-zinc-600 text-white rounded-xs">
+            {error === 'Default' ? 'Something went wrong' : error}
+          </code>
+        )}
       </p>
 
       <Link
