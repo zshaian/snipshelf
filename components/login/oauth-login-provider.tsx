@@ -20,7 +20,7 @@ export function OAuthLoginProvider({
     <form
       action={async () => {
         'use server';
-        await signIn(providerName);
+        await signIn(providerName, { redirectTo: '/snippets' });
       }}
     >
       <Button
