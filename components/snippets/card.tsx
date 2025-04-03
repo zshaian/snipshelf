@@ -8,7 +8,7 @@ export type SnippetCardProps = {
   id: string;
   title: string;
   description: string;
-  tags: string[];
+  tags: Array<string>;
   languageName: string;
   authorName: string;
   authorImage: string;
