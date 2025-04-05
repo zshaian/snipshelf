@@ -1,0 +1,132 @@
+[
+  {
+    "programmingLanguageName": "abap",
+    "programmingLanguageColor": "#E8274B"
+  },
+  { "programmingLanguageName": "apex", "programmingLanguageColor": "#1797c0" },
+  { "programmingLanguageName": "azcli", "programmingLanguageColor": "#007FFF" },
+  { "programmingLanguageName": "bat", "programmingLanguageColor": "#C1F12E" },
+  { "programmingLanguageName": "bicep", "programmingLanguageColor": "#519aba" },
+  { "programmingLanguageName": "c", "programmingLanguageColor": "#555555" },
+  {
+    "programmingLanguageName": "clojure",
+    "programmingLanguageColor": "#db5855"
+  },
+  {
+    "programmingLanguageName": "coffeescript",
+    "programmingLanguageColor": "#244776"
+  },
+  { "programmingLanguageName": "cpp", "programmingLanguageColor": "#f34b7d" },
+  {
+    "programmingLanguageName": "csharp",
+    "programmingLanguageColor": "#178600"
+  },
+  { "programmingLanguageName": "csp", "programmingLanguageColor": "#E3FFBA" },
+  { "programmingLanguageName": "css", "programmingLanguageColor": "#563d7c" },
+  {
+    "programmingLanguageName": "dockerfile",
+    "programmingLanguageColor": "#384d54"
+  },
+  {
+    "programmingLanguageName": "fsharp",
+    "programmingLanguageColor": "#b845fc"
+  },
+  { "programmingLanguageName": "go", "programmingLanguageColor": "#00ADD8" },
+  {
+    "programmingLanguageName": "graphql",
+    "programmingLanguageColor": "#e10098"
+  },
+  {
+    "programmingLanguageName": "handlebars",
+    "programmingLanguageColor": "#f0772b"
+  },
+  { "programmingLanguageName": "html", "programmingLanguageColor": "#e34c26" },
+  { "programmingLanguageName": "ini", "programmingLanguageColor": "#d1dbe0" },
+  { "programmingLanguageName": "java", "programmingLanguageColor": "#b07219" },
+  {
+    "programmingLanguageName": "javascript",
+    "programmingLanguageColor": "#f1e05a"
+  },
+  { "programmingLanguageName": "json", "programmingLanguageColor": "#292929" },
+  { "programmingLanguageName": "julia", "programmingLanguageColor": "#a270ba" },
+  {
+    "programmingLanguageName": "kotlin",
+    "programmingLanguageColor": "#F18E33"
+  },
+  { "programmingLanguageName": "less", "programmingLanguageColor": "#1d365d" },
+  { "programmingLanguageName": "lua", "programmingLanguageColor": "#000080" },
+  {
+    "programmingLanguageName": "markdown",
+    "programmingLanguageColor": "#083fa1"
+  },
+  { "programmingLanguageName": "mips", "programmingLanguageColor": "#0040cd" },
+  { "programmingLanguageName": "msdax", "programmingLanguageColor": "#00A6A6" },
+  { "programmingLanguageName": "mysql", "programmingLanguageColor": "#4479A1" },
+  {
+    "programmingLanguageName": "objective-c",
+    "programmingLanguageColor": "#438eff"
+  },
+  {
+    "programmingLanguageName": "pascal",
+    "programmingLanguageColor": "#E3F171"
+  },
+  { "programmingLanguageName": "perl", "programmingLanguageColor": "#0298c3" },
+  { "programmingLanguageName": "pgsql", "programmingLanguageColor": "#336791" },
+  { "programmingLanguageName": "php", "programmingLanguageColor": "#4F5D95" },
+  {
+    "programmingLanguageName": "plaintext",
+    "programmingLanguageColor": "#000000"
+  },
+  {
+    "programmingLanguageName": "postiats",
+    "programmingLanguageColor": "#d7902b"
+  },
+  {
+    "programmingLanguageName": "powerquery",
+    "programmingLanguageColor": "#fedc56"
+  },
+  {
+    "programmingLanguageName": "powershell",
+    "programmingLanguageColor": "#012456"
+  },
+  { "programmingLanguageName": "pug", "programmingLanguageColor": "#a86454" },
+  {
+    "programmingLanguageName": "python",
+    "programmingLanguageColor": "#3572A5"
+  },
+  { "programmingLanguageName": "r", "programmingLanguageColor": "#198CE7" },
+  { "programmingLanguageName": "razor", "programmingLanguageColor": "#512BD4" },
+  { "programmingLanguageName": "redis", "programmingLanguageColor": "#D82C20" },
+  {
+    "programmingLanguageName": "redshift",
+    "programmingLanguageColor": "#D82C20"
+  },
+  { "programmingLanguageName": "ruby", "programmingLanguageColor": "#701516" },
+  { "programmingLanguageName": "rust", "programmingLanguageColor": "#dea584" },
+  { "programmingLanguageName": "sb", "programmingLanguageColor": "#6A326F" },
+  {
+    "programmingLanguageName": "scheme",
+    "programmingLanguageColor": "#1e4aec"
+  },
+  { "programmingLanguageName": "scss", "programmingLanguageColor": "#c6538c" },
+  { "programmingLanguageName": "shell", "programmingLanguageColor": "#89e051" },
+  { "programmingLanguageName": "sol", "programmingLanguageColor": "#AA6746" },
+  { "programmingLanguageName": "sql", "programmingLanguageColor": "#e38c00" },
+  { "programmingLanguageName": "st", "programmingLanguageColor": "#8dc63f" },
+  { "programmingLanguageName": "swift", "programmingLanguageColor": "#ffac45" },
+  {
+    "programmingLanguageName": "systemverilog",
+    "programmingLanguageColor": "#DAE1C2"
+  },
+  {
+    "programmingLanguageName": "typescript",
+    "programmingLanguageColor": "#3178C6"
+  },
+  {
+    "programmingLanguageName": "verilog",
+    "programmingLanguageColor": "#b2b7f8"
+  },
+  { "programmingLanguageName": "vb", "programmingLanguageColor": "#945db7" },
+  { "programmingLanguageName": "xml", "programmingLanguageColor": "#0060ac" },
+  { "programmingLanguageName": "yaml", "programmingLanguageColor": "#cb171e" }
+]
