@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Contributions and feedback on your experience of using this software are welcome. This includes bug reports, feature requests, ideas, pull requests, and examples of how you have used this software.
+Contributions and feedback on your experience of using this web app are welcome. This includes bug reports, feature requests, ideas, pull requests, and examples of how you have used this web app.
 
 Please see the [Code of Conduct](./CODE_OF_CONDUCT.md) and follow any templates configured in GitHub when reporting bugs, requesting enhancements, or contributing code.
 
@@ -14,7 +14,7 @@ Anyone can be a contributor. Either you found a typo, or you have an awesome fea
 
 - We are following the [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow) and we expect you to do the same.
 - Pull Request needs an approval of one of person before merging.
-- We use ESLint and Prettier for linting and formatting. Additionally, we follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for creating commit messages. These processes are automatically triggered by `git hooks` when creating a commits. However, you can also manually run linting and formatting using the following commands: `pnpm lint` and `pnpm format`.
+- We use ESLint and Prettier for linting and formatting. Additionally, we follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for creating commit messages. These processes are automatically triggered by `git hooks` when creating a commits. However, you can also manually run linting and formatting using the following commands: `pnpm run lint` and `pnpm run format`.
 - We encourage you to test your changes, and if you have the opportunity, please make those tests part of the Pull Request.
 - If you add new functionality, please provide the corresponding documentation as well and make it part of the Pull Request. We use JSDoc, which means most of the time, the documentation is in the same file as the source code.
 
