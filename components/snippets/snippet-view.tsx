@@ -10,11 +10,9 @@ type SnippetViewProps={
 }
 
 import Image from "next/image";
-import SnippetVersion from "../mvp/snippet-version";
+
 import { Button } from "@/snipshelf/components/ui/button";
 import { CiBookmark } from 'react-icons/ci';
-import CodeEditorReadOnly from '@/components/mvp/code-editor-read-only';
-
 import { IoShareOutline,IoCopyOutline } from "react-icons/io5";
 
 export default function SnippetView({
@@ -64,7 +62,7 @@ return (
       
 
       </ul>
-      <SnippetVersion />
+
       <div>
         <p className="py-2 px-4 flex bg-input">
           <span className="ml-auto flex items-center gap-2">
