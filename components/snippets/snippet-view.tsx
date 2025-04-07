@@ -11,7 +11,7 @@ type SnippetViewProps={
 
 import Image from "next/image";
 import SnippetVersion from "../mvp/snippet-version";
-import { Button } from "../ui";
+import { Button } from "@/snipshelf/components/ui/button";
 import { CiBookmark } from 'react-icons/ci';
 import CodeEditorReadOnly from '@/components/mvp/code-editor-read-only';
 
