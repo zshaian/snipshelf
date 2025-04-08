@@ -19,7 +19,7 @@ export default function SnippetView({
     title,
     description,
     tags,
-    code,
+    // code,
     authorImage,
     date
 }:SnippetViewProps){
@@ -50,13 +50,15 @@ return (
         
    
             
- { tags!=undefined? tags.map((item)=>(
-  <li className="py-1 px-3 border border-input bg-input/30 rounded-full">
-    {item}
-    
-  </li>
+ { tags!=undefined? tags.map((item,index)=>{
+   return (
+     <li key={index} className="py-1 px-3 border border-input bg-input/30 rounded-full">
+       {item}
 
- )): ''
+     </li>
+
+   );
+ }): ''
 }
  
       
