@@ -11,9 +11,10 @@ type SnippetViewProps={
 
 import Image from "next/image";
 
-import { Button } from "@/snipshelf/components/ui/button";
+// import { Button } from "/snipshelf/components/u";
 import { CiBookmark } from 'react-icons/ci';
 import { IoShareOutline,IoCopyOutline } from "react-icons/io5";
+import  {Button}  from "@/components/ui";
 
 export default function SnippetView({
     title,
