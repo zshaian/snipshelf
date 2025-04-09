@@ -25,7 +25,6 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '../ui/button';
 import { Editor } from '@monaco-editor/react';
-import Navbar from '@/components/navbar/navbar';
 import SnippetLanguageBar from '@/components/snippets/snippet-language-bar';
 import { useTheme } from 'next-themes';
 import programmingLanguages from '@/data/programming-languages.json';
@@ -59,8 +58,7 @@ export default function SnippetForm() {
   };
 
   return (
-    <main className="h-screen flex flex-col">
-      <Navbar />
+    <>
       <SnippetLanguageBar
         programmingLanguageColor={getLanguageColor(
           programmingLanguageName,
@@ -207,6 +205,6 @@ export default function SnippetForm() {
           </div>
         </form>
       </Form>
-    </main>
+    </>
   );
 }
