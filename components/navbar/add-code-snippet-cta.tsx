@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { FiPlus } from 'react-icons/fi';
 import { buttonVariants } from '@/components/ui/button';
@@ -17,7 +19,7 @@ export default function AddCodeSnippetCta() {
       href="#"
       className={cn(
         buttonVariants({ variant: 'outline' }),
-        `!py-1 !px-1 rounded-sm lg:!py-1 lg:!px-2 h-auto ${isOnCreateOrEditSnippetPage ? 'flex' : 'hidden'} items-center capitalize lg:rounded-sm`
+        `!py-1 !px-1 rounded-sm lg:!py-1 lg:!px-2 h-auto ${isOnCreateOrEditSnippetPage ? 'hidden' : 'flex'} items-center capitalize lg:rounded-sm`
       )}
     >
       <FiPlus />
