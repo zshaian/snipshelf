@@ -80,3 +80,16 @@ export {
 } from '@/components/ui/drawer';
 
 export { Skeleton } from '@/components/ui/skeleton';
+
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
