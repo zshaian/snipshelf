@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Copy } from 'lucide-react';
+import { IoCopyOutline, IoCheckmark } from 'react-icons/io5';
 import {
   Dialog,
   DialogTrigger,
@@ -76,7 +76,7 @@ export default function ShareButton({ snippetLink }: ShareButtonProps) {
             onClick={handleCopyLink}
           >
             <span className="sr-only">Copy</span>
-            {copied ? <Check /> : <Copy />}
+            {copied ? <IoCheckmark /> : <IoCopyOutline />}
           </Button>
         </div>
         <DialogFooter className="sm:justify-start">
