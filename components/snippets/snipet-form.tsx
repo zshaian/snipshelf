@@ -24,11 +24,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '../ui/button';
-import { Editor } from '@monaco-editor/react';
 import SnippetLanguageBar from '@/components/snippets/snippet-language-bar';
-import { useTheme } from 'next-themes';
 import programmingLanguages from '@/data/programming-languages.json';
-import { getLanguageColor } from '@/lib/get-language-color';
+import SnippetEditor from '@/components/snippets/snippet-editor';
 
 const createSnippetFormSchema = z.object({
   title: z.string().nonempty('Title is required.'),
@@ -39,7 +37,6 @@ const createSnippetFormSchema = z.object({
 });
 
 export default function SnippetForm() {
-  const { resolvedTheme } = useTheme();
   const [snippetTags, setSnippetTags] = useState<Array<string>>([]);
 
   const form = useForm<z.infer<typeof createSnippetFormSchema>>({
@@ -52,20 +49,16 @@ export default function SnippetForm() {
       codeEditorValue: '',
     },
   });
+
   const programmingLanguageName = form.watch('language');
+
   const onSubmit = (data: z.infer<typeof createSnippetFormSchema>) => {
     console.log(data);
   };
 
   return (
     <>
-      <SnippetLanguageBar
-        programmingLanguageColor={getLanguageColor(
-          programmingLanguageName,
-          programmingLanguages
-        )}
-        programmingLanguageName={programmingLanguageName}
-      />
+      <SnippetLanguageBar programmingLanguageName={programmingLanguageName} />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1">
           <div className="h-full flex flex-col-reverse lg:flex-row">
@@ -193,10 +186,8 @@ export default function SnippetForm() {
                 name="codeEditorValue"
                 control={form.control}
                 render={({ field }) => (
-                  <Editor
-                    className="h-[350px] lg:h-[auto]"
-                    theme={resolvedTheme === 'dark' ? 'vs-dark' : 'light'}
-                    language={programmingLanguageName.toLowerCase()}
+                  <SnippetEditor
+                    programmingLanguageName={programmingLanguageName}
                     {...field}
                   />
                 )}

@@ -1,12 +1,17 @@
-type SnippetLanguageBar = {
+import { getLanguageColor } from '@/lib/get-language-color';
+import programmingLanguages from '@/data/programming-languages.json';
+
+type SnippetLanguageBarProps = {
   programmingLanguageName: string;
-  programmingLanguageColor: string;
 };
 
 export default function SnippetLanguageBar({
   programmingLanguageName,
-  programmingLanguageColor,
-}: SnippetLanguageBar) {
+}: SnippetLanguageBarProps) {
+  const programmingLanguageColor = getLanguageColor(
+    programmingLanguageName,
+    programmingLanguages
+  );
   return (
     <div className="py-1 mt-4 mx-4 flex items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-900 lg:m-0">
       <span
