@@ -1,6 +1,5 @@
 import type { IconType } from 'react-icons/lib';
 import { Button } from '../ui';
-import { signIn } from '@/auth';
 
 type OAuthLoginProviderProps = {
   /**
@@ -17,12 +16,7 @@ export function OAuthLoginProvider({
   ProviderIcon,
 }: OAuthLoginProviderProps) {
   return (
-    <form
-      action={async () => {
-        'use server';
-        await signIn(providerName, { redirectTo: '/snippets' });
-      }}
-    >
+    <form>
       <Button
         type="submit"
         variant="ghost"
