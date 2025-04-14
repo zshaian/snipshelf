@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 export default function NotFoundPage() {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <main className="h-screen flex items-center justify-center">
+      <main className="flex-1 flex items-center justify-center">
         <div className="px-4">
           <Image
             src="/images/logo_md.svg"
@@ -30,6 +30,6 @@ export default function NotFoundPage() {
           </Link>
         </div>
       </main>
-    </>
+    </div>
   );
 }
