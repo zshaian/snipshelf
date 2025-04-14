@@ -5,19 +5,11 @@ import { IoShareOutline } from 'react-icons/io5';
 import { Button } from '@/components/ui';
 import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly';
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
-
-type SnippetViewProps = {
-  title: string;
-  description: string;
-  tags: string[];
-  code: string;
-  programmingLanguageName: string;
-  authorImage: string;
-  authorName: string;
-  date: string;
-};
+import type { SnippetViewProps } from '@/types';
 
 export default function SnippetView({
+  // TODO: use the id props later for the bookmarking of the code snippet
+  // id,
   title,
   description,
   tags,
@@ -25,7 +17,7 @@ export default function SnippetView({
   programmingLanguageName,
   authorImage,
   authorName,
-  date,
+  dateCreated,
 }: SnippetViewProps) {
   return (
     <main className="h-screen flex items-center justify-center gap-4">
@@ -41,7 +33,7 @@ export default function SnippetView({
             />
             <p className="capitalize">{authorName}</p>
           </div>
-          <p className="capitalize">{date}</p>
+          <p className="capitalize">{dateCreated}</p>
         </div>
 
         <p className="text-xl font-bold capitalize">{title}</p>

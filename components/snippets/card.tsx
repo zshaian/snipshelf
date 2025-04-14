@@ -3,24 +3,15 @@ import Link from 'next/link';
 import { Button } from '@/components/ui';
 import { IoShareSocialOutline } from 'react-icons/io5';
 import { CiBookmark } from 'react-icons/ci';
-
-export type SnippetCardProps = {
-  id: string;
-  title: string;
-  description: string;
-  tags: Array<string>;
-  languageName: string;
-  authorName: string;
-  authorImage: string;
-  dateCreated: string;
-};
+import LanguageBadge from '@/components/language-badge';
+import type { SnippetCardProps } from '@/types';
 
 export default function SnippetCard({
   id,
   title,
   description,
   tags,
-  languageName,
+  programmingLanguageName,
   authorName,
   authorImage,
   dateCreated,
@@ -29,7 +20,7 @@ export default function SnippetCard({
     <li className="flex flex-col border border-input rounded-md">
       <div className="p-4 flex flex-col gap-y-4">
         <Link
-          href={`/${id}`}
+          href={`/snippets/${id}`}
           className="text-xl font-bold capitalize hover:underline text-blue-400"
         >
           {title}
@@ -50,8 +41,7 @@ export default function SnippetCard({
 
         <div className="flex items-center justify-between">
           <p className="flex items-center gap-x-2">
-            <span className="h-2 w-2 inline-block rounded-full bg-yellow-300"></span>
-            <span className="capitalize">{languageName}</span>
+            <LanguageBadge programmingLanguageName={programmingLanguageName} />
           </p>
           <div className="flex">
             <Button
