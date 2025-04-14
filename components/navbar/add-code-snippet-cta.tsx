@@ -16,7 +16,7 @@ export default function AddCodeSnippetCta() {
 
   return (
     <Link
-      href="#"
+      href="/snippets/create"
       className={cn(
         buttonVariants({ variant: 'outline' }),
         `!py-1 !px-1 rounded-sm lg:!py-1 lg:!px-2 h-auto ${isOnCreateOrEditSnippetPage ? 'hidden' : 'flex'} items-center capitalize lg:rounded-sm`
