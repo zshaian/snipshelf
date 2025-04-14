@@ -7,20 +7,28 @@ import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
 import type { SnippetViewProps } from '@/types';
 
-export default function SnippetView({
-  // TODO: use the id props later for the bookmarking of the code snippet
-  // id,
-  title,
-  description,
-  tags,
-  code,
-  programmingLanguageName,
-  authorImage,
-  authorName,
-  dateCreated,
-}: SnippetViewProps) {
+export default async function SnippetView({
+  snippetId,
+}: {
+  snippetId: string;
+}) {
+  // This is just an example endpoint will change it later.
+  const data = await fetch(`https://snippets/${snippetId}`);
+  const {
+    // TODO: use the id props later for bookmarking of the code snippet.
+    // id,
+    title,
+    description,
+    tags,
+    programmingLanguageName,
+    code,
+    authorImage,
+    authorName,
+    dateCreated,
+  }: SnippetViewProps = await data.json();
+
   return (
-    <main className="h-screen flex items-center justify-center gap-4">
+    <main className="flex-1 flex items-center justify-center gap-4">
       <section className="min-w-auto w-[800px] p-8 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

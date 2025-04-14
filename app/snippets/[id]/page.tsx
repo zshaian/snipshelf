@@ -1,4 +1,7 @@
 import Navbar from '@/components/navbar/navbar';
+import SnippetViewSkeleton from '@/components/skeleton/snippet-view';
+import SnippetView from '@/components/snippets/snippet-view';
+import { Suspense } from 'react';
 
 export default async function SnippetViewPage({
   params,
@@ -8,9 +11,11 @@ export default async function SnippetViewPage({
   const { id } = await params;
   // TODO: load the view of a code snippet base on the id in the params.
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <h1>{id}</h1>
-    </>
+      <Suspense fallback={<SnippetViewSkeleton />}>
+        <SnippetView snippetId={id} />
+      </Suspense>
+    </div>
   );
 }
