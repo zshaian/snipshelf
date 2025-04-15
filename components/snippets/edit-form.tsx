@@ -26,7 +26,7 @@ import { buttonVariants } from '../ui/button';
 import SnippetLanguageBar from '@/components/snippets/snippet-language-bar';
 import programmingLanguages from '@/data/programming-languages.json';
 import SnippetEditor from '@/components/snippets/snippet-editor';
-import { SnippetProps } from '@/types';
+import type { SnippetProps } from '@/types';
 
 const createSnippetFormSchema = z.object({
   title: z.string().nonempty('Title is required.'),

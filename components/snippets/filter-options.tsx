@@ -18,6 +18,7 @@ export default function FilterOptions() {
 
   const handleTitleSearch = (search: string) => {
     const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
     if (search) {
       params.set('title', search);
     } else {
@@ -28,6 +29,7 @@ export default function FilterOptions() {
 
   const handleLanguageSelect = (language: string) => {
     const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
     if (language) {
       params.set('language', language);
     } else {
