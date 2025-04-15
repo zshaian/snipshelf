@@ -36,7 +36,7 @@ const createSnippetFormSchema = z.object({
   codeEditorValue: z.string(),
 });
 
-export default function SnippetForm() {
+export default function CreateSnippetForm() {
   const [snippetTags, setSnippetTags] = useState<Array<string>>([]);
 
   const form = useForm<z.infer<typeof createSnippetFormSchema>>({
