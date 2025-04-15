@@ -93,3 +93,5 @@ export {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+
+export { InputTag } from '@/components/ui/input-tag';
