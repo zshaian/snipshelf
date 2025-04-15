@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui';
 
-export default function SnippetList() {
+export default function SnippetListSkeleton() {
   const SNIPPET_LIST_LIMIT = 9;
 
   return (
