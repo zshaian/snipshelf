@@ -5,7 +5,8 @@ import { IoShareOutline } from 'react-icons/io5';
 import { Button } from '@/components/ui';
 import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly';
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
-import type { SnippetViewProps } from '@/types';
+import type { SnippetProps } from '@/types';
+import { notFound } from 'next/navigation';
 
 export default async function SnippetView({
   snippetId,
@@ -13,7 +14,10 @@ export default async function SnippetView({
   snippetId: string;
 }) {
   // This is just an example endpoint will change it later.
-  const data = await fetch(`https://snippets/${snippetId}`);
+  const request = await fetch(`https://snippets/${snippetId}`);
+
+  if (!request.ok) notFound();
+
   const {
     // TODO: use the id props later for bookmarking of the code snippet.
     // id,
@@ -25,7 +29,7 @@ export default async function SnippetView({
     authorImage,
     authorName,
     dateCreated,
-  }: SnippetViewProps = await data.json();
+  }: SnippetProps = await request.json();
 
   return (
     <main className="flex-1 flex items-center justify-center gap-4">

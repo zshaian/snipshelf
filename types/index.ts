@@ -1,4 +1,4 @@
-export type SnippetViewProps = {
+export type SnippetProps = {
   id: string;
   title: string;
   description: string;
@@ -10,4 +10,4 @@ export type SnippetViewProps = {
   dateCreated: string;
 };
 
-export type SnippetCardProps = Omit<SnippetViewProps, 'code'>;
+export type SnippetCardProps = Omit<SnippetProps, 'code'>;
