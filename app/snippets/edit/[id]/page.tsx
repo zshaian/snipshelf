@@ -1,5 +1,7 @@
 import Navbar from '@/components/navbar/navbar';
+import SnippetFormSkeleton from '@/components/skeleton/snippet-form';
 import EditSnippetForm from '@/components/snippets/snippet-edit-form';
+import { Suspense } from 'react';
 
 export default async function EditSnippetPage({
   params,
@@ -11,7 +13,9 @@ export default async function EditSnippetPage({
   return (
     <main className="h-screen flex flex-col">
       <Navbar />
-      <EditSnippetForm snippetId={id} />
+      <Suspense fallback={<SnippetFormSkeleton />}>
+        <EditSnippetForm snippetId={id} />
+      </Suspense>
     </main>
   );
 }
