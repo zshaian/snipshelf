@@ -1,4 +1,4 @@
-import { UserProfile } from '@/types';
+import type { UserProfile } from '@/types';
 
 export async function getUserProfile({
   userId,
