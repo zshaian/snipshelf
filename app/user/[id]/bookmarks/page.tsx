@@ -26,10 +26,12 @@ export default async function ProfileBookmarksPage({
   });
   const userProfile = getUserProfile({ userId: id });
 
+  // TODO: replace later with an actual API endpoint
   const usersnippetList = getSnippetList({
     snippetListURL: `https://snippets/user/${id}/bookmarks/?${snippetListQuery}`,
   });
 
+  // TODO: replace later with an actual API endpoint
   const userPagination = getPagination({
     paginationURL: `https://snipets/pagination/${id}/bookmarks/?${snippetListQuery}`,
   });
