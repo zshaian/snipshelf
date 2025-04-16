@@ -11,12 +11,14 @@ import {
 } from '@/components/ui';
 import { generatePagination } from '@/lib/generate-pagination';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { use } from 'react';
 
 export default function SnippetsPagination({
-  totalPages,
+  totalPagesRequest,
 }: {
-  totalPages: number;
+  totalPagesRequest: Promise<number>;
 }) {
+  const totalPages = use(totalPagesRequest);
   const pathName = usePathname();
   const searchParam = useSearchParams();
   const currentPage = Number(searchParam.get('page')) || 1;

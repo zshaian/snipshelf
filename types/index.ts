@@ -11,3 +11,8 @@ export type SnippetProps = {
 };
 
 export type SnippetCardProps = Omit<SnippetProps, 'code'>;
+
+export type UserProfile = {
+  userName: string;
+  userImage: string;
+};
