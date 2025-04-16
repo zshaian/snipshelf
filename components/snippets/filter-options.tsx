@@ -11,12 +11,13 @@ import {
 import programmingLanguages from '@/data/programming-languages.json';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function FilterOptions() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  const handleTitleSearch = (search: string) => {
+  const handleTitleSearch = useDebouncedCallback((search: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
     if (search) {
@@ -25,7 +26,7 @@ export default function FilterOptions() {
       params.delete('title');
     }
     replace(`?${params.toString()}`);
-  };
+  }, 500);
 
   const handleLanguageSelect = (language: string) => {
     const params = new URLSearchParams(searchParams);
