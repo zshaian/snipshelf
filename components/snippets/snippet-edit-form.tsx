@@ -1,4 +1,4 @@
-import { SnippetProps } from '@/types';
+import type { SnippetProps } from '@/types';
 import { notFound } from 'next/navigation';
 import EditForm from '@/components/snippets/edit-form';
 
