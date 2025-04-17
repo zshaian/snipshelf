@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import { CiBookmark } from 'react-icons/ci';
@@ -6,18 +8,13 @@ import { Button } from '@/components/ui';
 import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly';
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
 import type { SnippetProps } from '@/types';
-import { notFound } from 'next/navigation';
+import { use } from 'react';
 
-export default async function SnippetView({
-  snippetId,
+export default function SnippetView({
+  snippetInfoRequest,
 }: {
-  snippetId: string;
+  snippetInfoRequest: Promise<SnippetProps>;
 }) {
-  // This is just an example endpoint will change it later.
-  const request = await fetch(`https://snippets/${snippetId}`);
-
-  if (!request.ok) notFound();
-
   const {
     // TODO: use the id props later for bookmarking of the code snippet.
     // id,
@@ -29,7 +26,7 @@ export default async function SnippetView({
     authorImage,
     authorName,
     dateCreated,
-  }: SnippetProps = await request.json();
+  } = use(snippetInfoRequest);
 
   return (
     <main className="flex-1 flex items-center justify-center gap-4">
