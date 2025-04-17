@@ -1,3 +1,5 @@
+'use client';
+
 import type { UserProfile } from '@/types';
 import Image from 'next/image';
 import { use } from 'react';

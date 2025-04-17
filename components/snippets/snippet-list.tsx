@@ -1,3 +1,5 @@
+'use client';
+
 import SnippetCard from '@/components/snippets/card';
 import { SnippetProps } from '@/types';
 import { use } from 'react';
