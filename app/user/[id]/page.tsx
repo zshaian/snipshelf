@@ -6,11 +6,9 @@ import SnippetListSkeleton from '@/components/skeleton/snippet-list';
 import UserProfileSkeleton from '@/components/skeleton/user-profile';
 import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
-import { buttonVariants } from '@/components/ui/button';
 import UserProfile from '@/components/user/user-profile';
-import { cn } from '@/lib/utils';
+import UserSnippetLinks from '@/components/user/user-snippet-links';
 import { getUserProfile, getSnippetList, getPagination } from '@/services';
-import Link from 'next/link';
 import { Suspense } from 'react';
 
 export default async function ProfilePage({
@@ -46,26 +44,7 @@ export default async function ProfilePage({
           <UserProfile userProfileRequest={userProfile} />
         </Suspense>
 
-        <div className="flex gap-x-2">
-          <Link
-            href={`https://snippets/user/${id}`}
-            className={cn(
-              buttonVariants({ variant: 'outline' }),
-              `capitalize rounded-full cursor-pointer`
-            )}
-          >
-            show all
-          </Link>
-          <Link
-            href={`https://snippets/user/${id}/bookmarks`}
-            className={cn(
-              buttonVariants({ variant: 'outline' }),
-              `capitalize rounded-full cursor-pointer`
-            )}
-          >
-            bookmarks
-          </Link>
-        </div>
+        <UserSnippetLinks userId={id} />
 
         <Suspense fallback={<FilterOptionsSkeleton />}>
           <FilterOptions />

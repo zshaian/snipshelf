@@ -7,6 +7,7 @@ import UserProfileSkeleton from '@/components/skeleton/user-profile';
 import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
 import UserProfile from '@/components/user/user-profile';
+import UserSnippetLinks from '@/components/user/user-snippet-links';
 import { getUserProfile, getSnippetList, getPagination } from '@/services';
 import { Suspense } from 'react';
 
@@ -43,6 +44,8 @@ export default async function ProfileBookmarksPage({
         <Suspense fallback={<UserProfileSkeleton />}>
           <UserProfile userProfileRequest={userProfile} />
         </Suspense>
+
+        <UserSnippetLinks userId={id} />
 
         <Suspense fallback={<FilterOptionsSkeleton />}>
           <FilterOptions />
