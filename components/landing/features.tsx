@@ -1,7 +1,9 @@
 export default function Features() {
   return (
     <section>
-      <ul>{/* features here */}</ul>
+      <ul>
+        
+      </ul>
     </section>
   );
 }
