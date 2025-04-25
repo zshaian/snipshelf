@@ -1,4 +1,5 @@
 import { Button } from '../ui';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -16,9 +17,11 @@ export default function Hero() {
         </h2>
         {/* Button Container */}
         <div className="max-w-full flex justify-center items-center gap-4">
-          <Button className="capitalize">Create code snippet</Button>
-          <Button variant="secondary" className="capitalize">
-            Browse code snippet
+          <Button className="capitalize" asChild>
+            <Link href="/snippets/create">Create code snippet</Link>
+          </Button>
+          <Button variant="secondary" className="capitalize" asChild>
+            <Link href="/mvp/snippets">Browse code snippet</Link>
           </Button>
         </div>
       </div>
