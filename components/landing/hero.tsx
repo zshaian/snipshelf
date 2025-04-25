@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section>
       {/* Hero Section Container */}
-      <div className="max-w-full min-h-screen flex flex-col justify-center items-center gap-6 md:gap-8">
+      <div className="max-w-full h-[70vh] lg:min-h-screen flex flex-col justify-center items-center gap-6 md:gap-8">
         {/* Primary Heading Container */}
         <h1 className="flex flex-col justify-center items-center text-[40px] md:text-7xl font-medium leading-tight">
           <span>The Snippet Tool</span>
