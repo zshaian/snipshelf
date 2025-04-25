@@ -1,3 +1,4 @@
+import Contribute from '@/components/landing/contribute-section';
 import Features from '@/components/landing/features';
 import Hero from '@/components/landing/hero';
 import Navbar from '@/components/navbar/navbar';
@@ -13,6 +14,8 @@ export default function LandingPage() {
       <Hero />
       {/* features section container */}
       <Features />
+      {/* contribute button section container */}
+      <Contribute />
       <div></div>
     </main>
   );
