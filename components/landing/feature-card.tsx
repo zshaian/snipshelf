@@ -12,7 +12,7 @@ export const FeatureCard = ({ title, description, Icon }: FeatureCardProps) => {
       <CardHeader>
         {/* header inner container for icon and heading*/}
         <div className="flex justify-start gap-4 items-center w-full">
-          <div className="h-max w-max p-2 bg-amber-600 rounded-md">
+          <div className="h-max w-max p-2 bg-gradient-to-tr from-[#1d1d1d] to-[#363636] rounded-md">
             {Icon && <Icon classname="h-8 w-8" />}
           </div>
           <CardTitle className="flex items-center justify-center text-xl">

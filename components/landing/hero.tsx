@@ -11,7 +11,7 @@ export default function Hero() {
           <span>For Developers</span>
         </h1>
         {/* Secondary Heading Container */}
-        <h2 className="max-w-[476px] text-center text-4xl font-regular">
+        <h2 className="max-w-[476px] text-center text-4xl font-regular text-[#a0a0a0]">
           <span>Save Share, and Organize Code Snippets.</span>
         </h2>
         {/* Button Container */}
