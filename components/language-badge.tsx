@@ -1,4 +1,4 @@
-import { getLanguageColor } from '@/lib/get-language-color';
+import { getLanguageColor } from '@/lib';
 import programmingLanguages from '@/data/programming-languages.json';
 
 export default function LanguageBadge({

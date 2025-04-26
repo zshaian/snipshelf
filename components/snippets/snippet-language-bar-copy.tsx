@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui';
 import { IoCopyOutline, IoCheckmark } from 'react-icons/io5';
 import { useState } from 'react';
-import { copyTextToClipBoard } from '@/lib/copy-text';
+import { copyTextToClipBoard } from '@/lib';
 import LanguageBadge from '@/components/language-badge';
 
 type SnippetLanguageBarCopyProps = {

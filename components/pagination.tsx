@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui';
-import { generatePagination } from '@/lib/generate-pagination';
+import { generatePagination } from '@/lib';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { use } from 'react';
 

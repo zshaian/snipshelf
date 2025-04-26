@@ -15,7 +15,7 @@ import {
   Input,
 } from '@/components/ui';
 import { useRef, useState } from 'react';
-import { copyTextToClipBoard } from '@/lib/copy-text';
+import { copyTextToClipBoard } from '@/lib';
 
 type ShareButtonProps = {
   /** The URL link of the code snippet */
