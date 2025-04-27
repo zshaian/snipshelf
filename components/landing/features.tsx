@@ -1,4 +1,4 @@
-import { FeatureCard } from './feature-card';
+import { FeatureCard } from '@/components/landing/feature-card';
 import { Search } from 'lucide-react';
 import { Share2 } from 'lucide-react';
 import { Plus } from 'lucide-react';
@@ -6,6 +6,7 @@ import { Plus } from 'lucide-react';
 export default function Features() {
   return (
     <section>
+      {/* to do adjust the colors of the icons and the icons container depending on the theme */}
       <div className="flex justify-center items-center max-w-screen h-full md:h-96 lg:h-64">
         <ul className="flex md:flex-row flex-col justify-center items-center gap-4 w-full lg:w-[80%] h-full">
           <li className="w-full flex items-center justify-center h-full">

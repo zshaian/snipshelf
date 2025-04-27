@@ -1,13 +1,14 @@
-import { Button } from '../ui';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { buttonVariants } from '@/components/ui/button';
 
 export default function Hero() {
   return (
     <section>
       {/* Hero Section Container */}
-      <div className="max-w-full h-[70vh] lg:min-h-screen flex flex-col justify-center items-center gap-6 md:gap-8">
+      <div className="h-[70vh] lg:h-screen flex flex-col justify-center items-center gap-6 md:gap-8">
         {/* Primary Heading Container */}
-        <h1 className="flex flex-col justify-center items-center text-[40px] md:text-7xl font-medium leading-tight">
+        <h1 className="flex flex-col justify-center items-center text-[40px] md:text-7xl font-bold leading-tight">
           <span>The Snippet Tool</span>
           <span>For Developers</span>
         </h1>
@@ -17,16 +18,24 @@ export default function Hero() {
         </h2>
         {/* Button Container */}
         <div className="w-xs md:max-w-full flex flex-col md:flex-row justify-center items-center gap-4">
-          <Button className="capitalize w-full md:w-auto" asChild>
-            <Link href="/snippets/create">Create code snippet</Link>
-          </Button>
-          <Button
-            variant="secondary"
-            className="capitalize w-full md:w-auto"
-            asChild
+          <Link
+            href="/snippets/create"
+            className={cn(
+              buttonVariants({ variant: 'default' }),
+              'capitalize w-full md:w-auto'
+            )}
           >
-            <Link href="/mvp/snippets">Browse code snippet</Link>
-          </Button>
+            Create code snippet
+          </Link>
+          <Link
+            href="#"
+            className={cn(
+              buttonVariants({ variant: 'secondary' }),
+              'capitalize w-full md:w-auto'
+            )}
+          >
+            Browse code snippet
+          </Link>
         </div>
       </div>
     </section>
