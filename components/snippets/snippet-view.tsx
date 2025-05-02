@@ -21,10 +21,9 @@ export default function SnippetView({
     title,
     description,
     tags,
-    programmingLanguageName,
+    language,
     code,
-    authorImage,
-    authorName,
+    profiles: { name, avatar },
     dateCreated,
   } = use(snippetInfoRequest);
 
@@ -34,13 +33,13 @@ export default function SnippetView({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src={authorImage}
+              src={avatar}
               alt=""
               height={30}
               width={30}
               className="rounded-full"
             />
-            <p className="capitalize">{authorName}</p>
+            <p className="capitalize">{name}</p>
           </div>
           <p className="capitalize">{dateCreated}</p>
         </div>
@@ -60,14 +59,8 @@ export default function SnippetView({
         </ul>
 
         <div className="flex flex-col overflow-hidden">
-          <SnippetLanguageBarCopy
-            codeToCopy={code}
-            programmingLanguageName={programmingLanguageName}
-          />
-          <SnippetEditorReadOnly
-            code={code}
-            programmingLanguageName={programmingLanguageName}
-          />
+          <SnippetLanguageBarCopy codeToCopy={code} language={language} />
+          <SnippetEditorReadOnly code={code} language={language} />
         </div>
 
         <div className="flex">

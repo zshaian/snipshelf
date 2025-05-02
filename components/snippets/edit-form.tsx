@@ -46,7 +46,7 @@ export default function EditForm({
     defaultValues: {
       title: snippetInfo.title || '',
       description: snippetInfo.description || '',
-      language: snippetInfo.programmingLanguageName || '',
+      language: snippetInfo.language || '',
       tags: snippetInfo.tags || [],
       codeEditorValue: snippetInfo.code || '',
     },

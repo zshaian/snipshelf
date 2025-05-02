@@ -11,13 +11,12 @@ export default function SnippetCard({
   title,
   description,
   tags,
-  programmingLanguageName,
-  authorName,
-  authorImage,
+  language,
+  profiles: { name, avatar },
   dateCreated,
 }: SnippetCardProps) {
   return (
-    <li className="flex flex-col border border-input rounded-md">
+    <div className="flex flex-col border border-input rounded-md">
       <div className="p-4 flex flex-col gap-y-4">
         <Link
           href={`/snippets/${id}`}
@@ -41,7 +40,7 @@ export default function SnippetCard({
 
         <div className="flex items-center justify-between">
           <p className="flex items-center gap-x-2">
-            <LanguageBadge programmingLanguageName={programmingLanguageName} />
+            <LanguageBadge language={language} />
           </p>
           <div className="flex">
             <Button
@@ -66,16 +65,16 @@ export default function SnippetCard({
       <div className="p-4 flex items-center justify-between border-t border-input">
         <div className="flex items-center gap-x-2">
           <Image
-            src={authorImage}
+            src={avatar}
             height={30}
             width={30}
             alt="author profile image"
             className="rounded-full"
           />
-          <p className="capitalize">{authorName}</p>
+          <p className="capitalize">{name}</p>
         </div>
         <p className="capitalize">{dateCreated}</p>
       </div>
-    </li>
+    </div>
   );
 }

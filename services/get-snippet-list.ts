@@ -1,5 +1,5 @@
 import type { PostgrestError } from '@supabase/supabase-js';
-import type { SnippetProps } from '@/types';
+import type { SnippetCardProps } from '@/types';
 import { SNIPPETS_PER_PAGE } from '@/constants';
 import { createClient } from '@/utils/supabase/server';
 
@@ -13,14 +13,14 @@ export async function getSnippetList({
   title,
   language,
   page,
-}: GetSnippetListProps): Promise<Array<SnippetProps>> {
+}: GetSnippetListProps): Promise<Array<SnippetCardProps>> {
   const from = (page - 1) * SNIPPETS_PER_PAGE;
   const to = from + 8;
 
   const supabase = await createClient();
   let snippetListQuery = supabase
     .from('snippets')
-    .select('*')
+    .select('*, profiles!inner(name, avatar)')
     .order('created_at', { ascending: false })
     .range(from, to);
 
@@ -31,7 +31,7 @@ export async function getSnippetList({
     data,
     error,
   }: {
-    data: Array<SnippetProps> | null;
+    data: Array<SnippetCardProps> | null;
     error: PostgrestError | null;
   } = await snippetListQuery;
 
@@ -40,6 +40,6 @@ export async function getSnippetList({
     // TODO: handle this better with a toast or something similar.
     throw new Error('Something Went Wrong');
   }
-
+  console.log(data);
   return data ?? [];
 }
