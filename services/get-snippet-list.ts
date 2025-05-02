@@ -40,6 +40,6 @@ export async function getSnippetList({
     // TODO: handle this better with a toast or something similar.
     throw new Error('Something Went Wrong');
   }
-  console.log(data);
+
   return data ?? [];
 }
