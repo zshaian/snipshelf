@@ -45,8 +45,8 @@ export default function FilterOptions() {
         onValueChange={(language) => handleLanguageSelect(language)}
         defaultValue={searchParams.get('language')?.toString()}
       >
-        <SelectTrigger className="w-full lg:w-[250px] uppercase">
-          <SelectValue placeholder="Select a Language"></SelectValue>
+        <SelectTrigger className="w-full lg:w-[250px]">
+          <SelectValue placeholder="Select Language"></SelectValue>
         </SelectTrigger>
         <SelectContent className="capitalize">
           {programmingLanguages.map((language) => (
