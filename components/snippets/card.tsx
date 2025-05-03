@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui';
-import { IoShareSocialOutline } from 'react-icons/io5';
 import { CiBookmark } from 'react-icons/ci';
 import LanguageBadge from '@/components/language-badge';
 import type { SnippetCardProps } from '@/types';
+import ShareButton from '@/components/share-button';
 
 export default function SnippetCard({
   id,
@@ -50,13 +50,7 @@ export default function SnippetCard({
               <CiBookmark />
               <span>bookmark</span>
             </Button>
-            <Button
-              className="flex gap-2 rounded-none capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <IoShareSocialOutline />
-              <span>share</span>
-            </Button>
+            <ShareButton id={id} />
           </div>
         </div>
       </div>

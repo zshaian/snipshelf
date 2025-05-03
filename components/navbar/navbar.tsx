@@ -1,6 +1,8 @@
 import ThemeToggle from '@/components/theme-toggle';
 import User from '@/components/navbar/user';
-import AddCodeSnippetCta from './add-code-snippet-cta';
+import AddCodeSnippetCta from '@/components/navbar/add-code-snippet-cta';
+import { Skeleton } from '@/components/ui';
+import { Suspense } from 'react';
 
 export default function Navbar() {
   return (
@@ -10,7 +12,9 @@ export default function Navbar() {
         <AddCodeSnippetCta />
         <div className="flex items-center">
           <ThemeToggle />
-          <User />
+          <Suspense fallback={<Skeleton className="rounded-full h-4 w-4" />}>
+            <User />
+          </Suspense>
         </div>
       </div>
     </nav>

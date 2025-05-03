@@ -3,12 +3,12 @@
 import Image from 'next/image';
 
 import { CiBookmark } from 'react-icons/ci';
-import { IoShareOutline } from 'react-icons/io5';
 import { Button } from '@/components/ui';
 import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly';
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
 import type { SnippetProps } from '@/types';
 import { use } from 'react';
+import ShareButton from '@/components/share-button';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -16,8 +16,7 @@ export default function SnippetView({
   snippetInfoRequest: Promise<SnippetProps>;
 }) {
   const {
-    // TODO: use the id props later for bookmarking of the code snippet.
-    // id,
+    id,
     title,
     description,
     tags,
@@ -72,13 +71,7 @@ export default function SnippetView({
               <CiBookmark />
               <span>bookmark</span>
             </Button>
-            <Button
-              className="flex gap-2 rounded-none capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <IoShareOutline />
-              <span>share</span>
-            </Button>
+            <ShareButton id={id} />
           </div>
         </div>
       </section>

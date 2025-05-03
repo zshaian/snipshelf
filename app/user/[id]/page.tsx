@@ -3,12 +3,16 @@ import SnippetsPagination from '@/components/pagination';
 import FilterOptionsSkeleton from '@/components/skeleton/filter-snippets';
 import PaginationSkeleton from '@/components/skeleton/pagination';
 import SnippetListSkeleton from '@/components/skeleton/snippet-list';
-// import UserProfileSkeleton from '@/components/skeleton/user-profile';
+import UserProfileSkeleton from '@/components/skeleton/user-profile';
 import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
-// import UserProfile from '@/components/user/user-profile';
+import UserProfile from '@/components/user/user-profile';
 import UserSnippetLinks from '@/components/user/user-snippet-links';
-import { getSnippetList, getPagination } from '@/services';
+import {
+  getUserProfile,
+  getUserSnippetList,
+  getUserPagination,
+} from '@/services';
 import { Suspense } from 'react';
 
 export default async function ProfilePage({
@@ -21,27 +25,28 @@ export default async function ProfilePage({
   const { id } = await params;
   const { title = '', language = '', page = '1' } = await searchParams;
 
-  // const userProfile = getUserProfile({ userId: id });
+  const userProfile = getUserProfile({ id });
 
-  // TODO: replace later with an actual API endpoint
-  const usersnippetList = getSnippetList({
+  const usersnippetList = getUserSnippetList({
     title,
     language,
     page: Number(page),
+    id,
   });
-  // TODO: replace later with an actual API endpoint
-  const userPagination = getPagination({
+
+  const userPagination = getUserPagination({
     title,
     language,
+    id,
   });
 
   return (
     <>
       <Navbar />
-      <main className="p-8 flex flex-col gap-4">
-        {/* <Suspense fallback={<UserProfileSkeleton />}>
+      <main className="p-8 pt-2 flex flex-col gap-4">
+        <Suspense fallback={<UserProfileSkeleton />}>
           <UserProfile userProfileRequest={userProfile} />
-        </Suspense> */}
+        </Suspense>
 
         <UserSnippetLinks userId={id} />
 

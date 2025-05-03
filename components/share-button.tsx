@@ -1,6 +1,7 @@
 'use client';
 
 import { IoCopyOutline, IoCheckmark } from 'react-icons/io5';
+import { IoShareSocialOutline } from 'react-icons/io5';
 import {
   Dialog,
   DialogTrigger,
@@ -17,14 +18,10 @@ import {
 import { useRef, useState } from 'react';
 import { copyTextToClipBoard } from '@/lib';
 
-type ShareButtonProps = {
-  /** The URL link of the code snippet */
-  snippetLink: string;
-};
-
-export default function ShareButton({ snippetLink }: ShareButtonProps) {
+export default function ShareButton({ id }: { id: string }) {
   const [copied, setCopied] = useState<boolean>(false);
   const linkInputRef = useRef<HTMLInputElement>(null);
+  const baseUrl = window.location.origin;
 
   const handleCopyLink = async () => {
     const linkInputValue = linkInputRef.current?.value;
@@ -47,7 +44,8 @@ export default function ShareButton({ snippetLink }: ShareButtonProps) {
           variant="ghost"
           className="border-none rounded-none cursor-pointer"
         >
-          Share
+          <IoShareSocialOutline />
+          <span>Share</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
@@ -64,7 +62,7 @@ export default function ShareButton({ snippetLink }: ShareButtonProps) {
             </Label>
             <Input
               id="link"
-              defaultValue={snippetLink}
+              defaultValue={`${baseUrl}/snippets/${id}`}
               readOnly
               ref={linkInputRef}
             />
