@@ -3,7 +3,7 @@ import programmingLanguages from '@/data/programming-languages.json';
 
 export default function LanguageBadge({ language }: { language: string }) {
   const programmingLanguageColor = getLanguageColor(
-    language,
+    language.toLowerCase(),
     programmingLanguages
   );
 

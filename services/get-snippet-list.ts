@@ -24,8 +24,13 @@ export async function getSnippetList({
     .order('created_at', { ascending: false })
     .range(from, to);
 
-  if (title) snippetListQuery = snippetListQuery.ilike('title', `%${title}%`);
-  if (language) snippetListQuery = snippetListQuery.eq('language', language);
+  if (title)
+    snippetListQuery = snippetListQuery.ilike(
+      'title',
+      `%${title.toLowerCase()}%`
+    );
+  if (language)
+    snippetListQuery = snippetListQuery.eq('language', language.toLowerCase());
 
   const {
     data,

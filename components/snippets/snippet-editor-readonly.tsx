@@ -18,7 +18,7 @@ export default function SnippetEditorReadOnly({
   return (
     <Editor
       theme={resolvedTheme === 'dark' ? 'vs-dark' : 'light'}
-      language={language}
+      language={language.toLowerCase()}
       value={code}
       options={{ readOnly: true, fontSize: 16 }}
       className="w-full h-[250px]"

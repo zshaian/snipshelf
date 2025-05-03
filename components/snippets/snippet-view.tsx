@@ -58,7 +58,7 @@ export default function SnippetView({
           ))}
         </ul>
 
-        <div className="flex flex-col overflow-hidden">
+        <div className="flex flex-col overflow-hidden shadow-md">
           <SnippetLanguageBarCopy codeToCopy={code} language={language} />
           <SnippetEditorReadOnly code={code} language={language} />
         </div>
