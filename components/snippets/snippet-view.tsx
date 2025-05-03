@@ -9,6 +9,7 @@ import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-c
 import type { SnippetProps } from '@/types';
 import { use } from 'react';
 import ShareButton from '@/components/share-button';
+import BackLink from '@/components/back-link';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -27,8 +28,9 @@ export default function SnippetView({
   } = use(snippetInfoRequest);
 
   return (
-    <main className="flex-1 flex items-center justify-center gap-4">
-      <section className="min-w-auto w-[800px] p-8 flex flex-col gap-4">
+    <main className="flex-1 flex flex-col items-center justify-center">
+      <BackLink />
+      <section className="flex-1 w-full max-w-[800px] pt-4 pb-4 p-8 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
@@ -44,7 +46,7 @@ export default function SnippetView({
         </div>
 
         <p className="text-xl font-bold capitalize">{title}</p>
-        <p>{description} </p>
+        <p className="mb-1">{description} </p>
 
         <ul className="flex gap-1 text-sm capitalize">
           {tags.map((item) => (
