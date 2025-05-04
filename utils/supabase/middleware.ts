@@ -42,11 +42,19 @@ export async function updateSession(request: NextRequest) {
   const isProtected = protectedRoutes.some((route) =>
     request.nextUrl.pathname.startsWith(route)
   );
+  const isUserLoggedInAndInLoginPage =
+    user && request.nextUrl.pathname.startsWith('/login');
 
   if (!user && isProtected) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
     url.pathname = '/login';
+    return NextResponse.redirect(url);
+  }
+  // if the user is logged in and try to navigate to the login page, redirect them into the main page
+  if (isUserLoggedInAndInLoginPage) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
     return NextResponse.redirect(url);
   }
 
