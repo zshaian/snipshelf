@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,4 +119,53 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.gradient-border-wrapper {
+  position: relative;
+  padding: 2px;
+  border-radius: var(--radius);
+  background: linear-gradient(
+    45deg,
+    var(--chart-1),
+    var(--chart-2),
+    var(--chart-3),
+    var(--chart-4),
+    var(--chart-5),
+    var(--chart-1)
+  );
+  background-size: 300% 300%;
+  animation: gradientBorder 4s ease infinite;
+}
+
+.gradient-border-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.7;
+  animation: gradientBorder 4s ease infinite;
+}
+
+@keyframes gradientBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dark .gradient-border-wrapper {
+  opacity: 0.9;
+}
+
+.dark .gradient-border-wrapper::before {
+  opacity: 0.5;
 }
