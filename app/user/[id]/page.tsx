@@ -8,11 +8,7 @@ import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
 import UserProfile from '@/components/user/user-profile';
 import UserSnippetLinks from '@/components/user/user-snippet-links';
-import {
-  getUserProfile,
-  getUserSnippetList,
-  getUserPagination,
-} from '@/services';
+import { getUserProfile, getSnippetList, getPagination } from '@/services';
 import { Suspense } from 'react';
 
 export default async function ProfilePage({
@@ -27,17 +23,17 @@ export default async function ProfilePage({
 
   const userProfile = getUserProfile({ id });
 
-  const usersnippetList = getUserSnippetList({
+  const usersnippetList = getSnippetList({
     title,
     language,
     page: Number(page),
-    id,
+    filteredByUserId: id,
   });
 
-  const userPagination = getUserPagination({
+  const userPagination = getPagination({
     title,
     language,
-    id,
+    filteredByUserId: id,
   });
 
   return (
