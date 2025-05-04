@@ -2,8 +2,6 @@
 
 import Image from 'next/image';
 
-import { CiBookmark } from 'react-icons/ci';
-import { Button } from '@/components/ui';
 import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly';
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
 import type { SnippetProps } from '@/types';
@@ -11,6 +9,7 @@ import { use } from 'react';
 import ShareButton from '@/components/share-button';
 import BackLink from '@/components/back-link';
 import { formatCreationDate } from '@/lib';
+import BookmarkButton from '../bookmark-button';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -26,6 +25,7 @@ export default function SnippetView({
     code,
     profiles: { name, avatar },
     created_at,
+    isBookmarked = false,
   } = use(snippetInfoRequest);
 
   return (
@@ -67,13 +67,7 @@ export default function SnippetView({
 
         <div className="flex">
           <div className="ml-auto flex">
-            <Button
-              className="flex gap-2 rounded-none border-r border-input capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <CiBookmark />
-              <span>bookmark</span>
-            </Button>
+            <BookmarkButton snippetId={id} isBookmarked={isBookmarked} />
             <ShareButton id={id} />
           </div>
         </div>

@@ -14,6 +14,40 @@ export async function getSnippetInfo(id: string): Promise<SnippetProps> {
       .eq('id', id)
       .single();
 
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError) {
+    // TODO: handle this better with a toast or something similar.
+    console.error('Something Went Wrong', userError);
+  }
+
+  if (user) {
+    const { data: bookmarkSnippet, error: bookmarkError } = await supabase
+      .from('bookmarks')
+      .select('snippet_id')
+      .eq('user_id', user.id);
+
+    if (bookmarkError) {
+      console.error(
+        'there was a problem getting the snippet info',
+        bookmarkError
+      );
+      throw new Error('something Went wrong', bookmarkError);
+    }
+
+    if (bookmarkSnippet && data) {
+      return {
+        ...data,
+        isBookmarked: bookmarkSnippet.some(
+          (b) => Number(b.snippet_id) === Number(id)
+        ),
+      };
+    }
+  }
+
   if (error) {
     console.error(error.message);
     // TODO: handle this better with a toast or something similar.
