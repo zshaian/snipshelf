@@ -16,13 +16,7 @@ export async function getSnippetInfo(id: string): Promise<SnippetProps> {
 
   const {
     data: { user },
-    error: userError,
   } = await supabase.auth.getUser();
-
-  if (userError) {
-    // TODO: handle this better with a toast or something similar.
-    console.error('Something Went Wrong', userError);
-  }
 
   if (user) {
     const { data: bookmarkSnippet, error: bookmarkError } = await supabase
