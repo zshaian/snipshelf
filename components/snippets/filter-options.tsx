@@ -26,7 +26,7 @@ export default function FilterOptions() {
       params.delete('title');
     }
     replace(`?${params.toString()}`);
-  }, 500);
+  }, 300);
 
   const handleLanguageSelect = (language: string) => {
     const params = new URLSearchParams(searchParams);
