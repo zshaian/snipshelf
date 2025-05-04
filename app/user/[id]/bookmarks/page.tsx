@@ -23,7 +23,6 @@ export default async function ProfileBookmarksPage({
 
   const userProfile = getUserProfile({ id });
 
-  // TODO: replace later with an actual API endpoint
   const usersnippetList = getSnippetList({
     title,
     language,
@@ -31,7 +30,6 @@ export default async function ProfileBookmarksPage({
     filteredByUserBookmarks: id,
   });
 
-  // TODO: replace later with an actual API endpoint
   const userPagination = getPagination({
     title,
     language,

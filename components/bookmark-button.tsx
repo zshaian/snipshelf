@@ -1,7 +1,7 @@
 'use client';
 
 import { useTransition } from 'react';
-import { toggleBookmark } from '@/actions/toggle-bookmark';
+import { toggleBookmark } from '@/actions';
 import { Button } from '@/components/ui';
 import { CiBookmark } from 'react-icons/ci';
 import { FaBookmark } from 'react-icons/fa6';

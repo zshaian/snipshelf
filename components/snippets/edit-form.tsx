@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { InputTag } from '@/components/ui';
+// import { InputTag } from '@/components/ui';
 import { z } from 'zod';
 import {
   Form,
@@ -140,7 +140,7 @@ export default function EditForm({
                 />
 
                 {/* snippet tags */}
-                <InputTag />
+                {/* <InputTag /> */}
 
                 <div className="flex gap-2">
                   <Button

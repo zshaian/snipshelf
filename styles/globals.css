@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -118,5 +118,16 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .input-tag-scroll::-webkit-scrollbar {
+    @apply w-1 bg-zinc-200 dark:bg-zinc-800;
+  }
+
+  .input-tag-scroll::-webkit-scrollbar-thumb {
+    @apply bg-zinc-500 dark:bg-zinc-200;
+    border-radius: 100vh;
   }
 }

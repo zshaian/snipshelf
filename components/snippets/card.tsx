@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-// import { Button } from '@/components/ui';
-// import { CiBookmark } from 'react-icons/ci';
 import LanguageBadge from '@/components/language-badge';
 import type { SnippetCardProps } from '@/types';
 import ShareButton from '@/components/share-button';
