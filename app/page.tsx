@@ -7,7 +7,7 @@ import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
 import { Suspense } from 'react';
 import { getSnippetList, getPagination } from '@/services';
-import SignOutButton from '@/components/sign-out-button';
+import CautionBlock from '@/components/caution-block';
 
 export default async function MainPage({
   searchParams,
@@ -31,6 +31,7 @@ export default async function MainPage({
   return (
     <>
       <Navbar />
+      <CautionBlock />
       <main className="p-8 flex flex-col gap-4">
         <Suspense fallback={<FilterOptionsSkeleton />}>
           <FilterOptions />
@@ -43,8 +44,6 @@ export default async function MainPage({
         <Suspense fallback={<PaginationSkeleton />}>
           <SnippetsPagination totalPagesRequest={pagination} />
         </Suspense>
-
-        <SignOutButton />
       </main>
     </>
   );
