@@ -17,7 +17,7 @@ export default function SnippetCard({
   isBookmarked = false,
 }: SnippetCardProps) {
   return (
-    <div className="flex flex-col border border-input rounded-md">
+    <div className="flex flex-col border border-input rounded-md shadow-md bg-zinc-100 dark:bg-zinc-900">
       <div className="p-4 flex flex-col gap-y-4">
         <Link
           href={`/snippets/${id}`}
