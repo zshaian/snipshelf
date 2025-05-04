@@ -15,13 +15,17 @@ import {
   Label,
   Input,
 } from '@/components/ui';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { copyTextToClipBoard } from '@/lib';
 
 export default function ShareButton({ id }: { id: string }) {
   const [copied, setCopied] = useState<boolean>(false);
   const linkInputRef = useRef<HTMLInputElement>(null);
-  const baseUrl = window.location.origin;
+  const [baseUrl, setBaseUrl] = useState<string>('');
+
+  useEffect(() => {
+    setBaseUrl(window.location.origin);
+  }, []);
 
   const handleCopyLink = async () => {
     const linkInputValue = linkInputRef.current?.value;
@@ -52,7 +56,8 @@ export default function ShareButton({ id }: { id: string }) {
         <DialogHeader>
           <DialogTitle>Share Code Snippet link</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this code snippet.
+            Share this link with others to let them view your code snippet
+            effortlessly.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
