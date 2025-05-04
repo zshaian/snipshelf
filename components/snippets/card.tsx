@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui';
-import { CiBookmark } from 'react-icons/ci';
+// import { Button } from '@/components/ui';
+// import { CiBookmark } from 'react-icons/ci';
 import LanguageBadge from '@/components/language-badge';
 import type { SnippetCardProps } from '@/types';
 import ShareButton from '@/components/share-button';
+import BookmarkButton from '@/components/bookmark-button';
+import { formatCreationDate } from '@/lib';
 
 export default function SnippetCard({
   id,
@@ -13,7 +15,8 @@ export default function SnippetCard({
   tags,
   language,
   profiles: { name, avatar },
-  dateCreated,
+  created_at,
+  isBookmarked = false,
 }: SnippetCardProps) {
   return (
     <div className="flex flex-col border border-input rounded-md">
@@ -43,13 +46,7 @@ export default function SnippetCard({
             <LanguageBadge language={language} />
           </p>
           <div className="flex">
-            <Button
-              className="flex gap-2 rounded-none border-r border-input capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <CiBookmark />
-              <span>bookmark</span>
-            </Button>
+            <BookmarkButton snippetId={id} isBookmarked={isBookmarked} />
             <ShareButton id={id} />
           </div>
         </div>
@@ -67,7 +64,7 @@ export default function SnippetCard({
           />
           <p className="capitalize">{name}</p>
         </div>
-        <p className="capitalize">{dateCreated}</p>
+        <p className="capitalize">{formatCreationDate(created_at)}</p>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import type { SnippetProps } from '@/types';
 import { use } from 'react';
 import ShareButton from '@/components/share-button';
 import BackLink from '@/components/back-link';
+import { formatCreationDate } from '@/lib';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -24,7 +25,7 @@ export default function SnippetView({
     language,
     code,
     profiles: { name, avatar },
-    dateCreated,
+    created_at,
   } = use(snippetInfoRequest);
 
   return (
@@ -42,7 +43,7 @@ export default function SnippetView({
             />
             <p className="capitalize">{name}</p>
           </div>
-          <p className="capitalize">{dateCreated}</p>
+          <p className="capitalize">{formatCreationDate(created_at)}</p>
         </div>
 
         <p className="text-xl font-bold capitalize">{title}</p>
