@@ -12,7 +12,11 @@ export default function Navbar() {
         <AddCodeSnippetCta />
         <div className="flex items-center">
           <ThemeToggle />
-          <Suspense fallback={<Skeleton className="rounded-full h-4 w-4" />}>
+          <Suspense
+            fallback={
+              <Skeleton className="h-[30px] w-[30px] ml-2 inline-block rounded-full" />
+            }
+          >
             <User />
           </Suspense>
         </div>
