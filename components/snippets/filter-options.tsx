@@ -31,7 +31,9 @@ export default function FilterOptions() {
   const handleLanguageSelect = (language: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
-    if (language) {
+    if (language === 'all') {
+      params.delete('language');
+    } else if (language) {
       params.set('language', language);
     } else {
       params.delete('language');
@@ -49,6 +51,9 @@ export default function FilterOptions() {
           <SelectValue placeholder="Select Language"></SelectValue>
         </SelectTrigger>
         <SelectContent className="capitalize">
+          <SelectItem value="all" className="uppercase">
+            show all
+          </SelectItem>
           {programmingLanguages.map((language) => (
             <SelectItem
               key={language.programmingLanguageName}
