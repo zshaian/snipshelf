@@ -7,6 +7,7 @@ import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
 import { Suspense } from 'react';
 import { getSnippetList, getPagination } from '@/services';
+import SignOutButton from '@/components/sign-out-button';
 
 export default async function MainPage({
   searchParams,
@@ -42,6 +43,8 @@ export default async function MainPage({
         <Suspense fallback={<PaginationSkeleton />}>
           <SnippetsPagination totalPagesRequest={pagination} />
         </Suspense>
+
+        <SignOutButton />
       </main>
     </>
   );
