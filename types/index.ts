@@ -11,7 +11,8 @@ export type SnippetProps = {
   code: string;
   language: string;
   profiles: UserProfile;
-  dateCreated: string;
+  created_at: string;
+  isBookmarked?: boolean;
 };
 
 export type SnippetCardProps = Omit<SnippetProps, 'code'>;
