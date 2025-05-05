@@ -2,6 +2,8 @@
 
 ![banner](./public/images/banner.png)
 
+up
+
 A simple web application for creating, showcasing, and sharing code snippets.
 
 ```
