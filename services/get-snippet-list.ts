@@ -83,10 +83,12 @@ export async function getSnippetList({
     error: PostgrestError | null;
   } = await snippetListQuery;
 
-  if (error || !snippets) {
-    console.error(error?.message);
-    // TODO: handle this better with a toast or something similar.
-    throw new Error('Something Went Wrong');
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  if (!snippets) {
+    return [];
   }
 
   if (user) {

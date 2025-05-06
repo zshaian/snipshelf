@@ -21,4 +21,9 @@ export type SnippetPropsForm = Omit<
   'id' | 'created_at' | 'isBookmarked' | 'profiles'
 >;
 
+export type ErrorPageProps = {
+  error: Error & { disgest?: string };
+  reset: () => void;
+};
+
 export type SnippetCardProps = Omit<SnippetProps, 'code'>;
