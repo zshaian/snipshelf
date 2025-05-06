@@ -1,18 +1,23 @@
+export type UserProfile = {
+  name: string;
+  avatar: string;
+};
+
 export type SnippetProps = {
   id: string;
   title: string;
   description: string;
   tags: string[];
   code: string;
-  programmingLanguageName: string;
-  authorImage: string;
-  authorName: string;
-  dateCreated: string;
+  language: string;
+  profiles: UserProfile;
+  created_at: string;
+  isBookmarked?: boolean;
 };
+
+export type SnippetPropsForm = Omit<
+  SnippetProps,
+  'id' | 'created_at' | 'isBookmarked' | 'profiles'
+>;
 
 export type SnippetCardProps = Omit<SnippetProps, 'code'>;
-
-export type UserProfile = {
-  userName: string;
-  userImage: string;
-};

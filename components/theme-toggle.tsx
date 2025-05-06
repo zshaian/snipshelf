@@ -5,13 +5,20 @@ import { Checkbox, Label } from '@/components/ui';
 import { CiDark, CiLight } from 'react-icons/ci';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
+import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState<boolean>(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleChangeTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
+
+  if (!mounted) return null;
 
   return (
     <div>

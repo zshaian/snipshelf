@@ -10,7 +10,7 @@ export default async function SnippetViewPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const snippetInfo = getSnippetInfo({ snippetId: id });
+  const snippetInfo = getSnippetInfo(id);
 
   return (
     <div className="h-screen flex flex-col">

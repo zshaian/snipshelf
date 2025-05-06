@@ -1,6 +1,7 @@
 'use client';
 
 import { IoCopyOutline, IoCheckmark } from 'react-icons/io5';
+import { IoShareSocialOutline } from 'react-icons/io5';
 import {
   Dialog,
   DialogTrigger,
@@ -14,17 +15,17 @@ import {
   Label,
   Input,
 } from '@/components/ui';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { copyTextToClipBoard } from '@/lib';
 
-type ShareButtonProps = {
-  /** The URL link of the code snippet */
-  snippetLink: string;
-};
-
-export default function ShareButton({ snippetLink }: ShareButtonProps) {
+export default function ShareButton({ id }: { id: string }) {
   const [copied, setCopied] = useState<boolean>(false);
   const linkInputRef = useRef<HTMLInputElement>(null);
+  const [baseUrl, setBaseUrl] = useState<string>('');
+
+  useEffect(() => {
+    setBaseUrl(window.location.origin);
+  }, []);
 
   const handleCopyLink = async () => {
     const linkInputValue = linkInputRef.current?.value;
@@ -47,14 +48,16 @@ export default function ShareButton({ snippetLink }: ShareButtonProps) {
           variant="ghost"
           className="border-none rounded-none cursor-pointer"
         >
-          Share
+          <IoShareSocialOutline />
+          <span>Share</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Share Code Snippet link</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this code snippet.
+            Share this link with others to let them view your code snippet
+            effortlessly.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
@@ -64,7 +67,7 @@ export default function ShareButton({ snippetLink }: ShareButtonProps) {
             </Label>
             <Input
               id="link"
-              defaultValue={snippetLink}
+              defaultValue={`${baseUrl}/snippets/${id}`}
               readOnly
               ref={linkInputRef}
             />

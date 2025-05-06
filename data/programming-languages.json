@@ -4,7 +4,12 @@
     "programmingLanguageColor": "#E8274B"
   },
   { "programmingLanguageName": "apex", "programmingLanguageColor": "#1797c0" },
+  {
+    "programmingLanguageName": "assembly",
+    "programmingLanguageColor": "#6e4c13"
+  },
   { "programmingLanguageName": "azcli", "programmingLanguageColor": "#007FFF" },
+  { "programmingLanguageName": "bash", "programmingLanguageColor": "#89e051" },
   { "programmingLanguageName": "bat", "programmingLanguageColor": "#C1F12E" },
   { "programmingLanguageName": "bicep", "programmingLanguageColor": "#519aba" },
   { "programmingLanguageName": "c", "programmingLanguageColor": "#555555" },
@@ -23,9 +28,14 @@
   },
   { "programmingLanguageName": "csp", "programmingLanguageColor": "#E3FFBA" },
   { "programmingLanguageName": "css", "programmingLanguageColor": "#563d7c" },
+  { "programmingLanguageName": "dart", "programmingLanguageColor": "#00b4ab" },
   {
     "programmingLanguageName": "dockerfile",
     "programmingLanguageColor": "#384d54"
+  },
+  {
+    "programmingLanguageName": "elixir",
+    "programmingLanguageColor": "#6e4a7e"
   },
   {
     "programmingLanguageName": "fsharp",
@@ -39,6 +49,10 @@
   {
     "programmingLanguageName": "handlebars",
     "programmingLanguageColor": "#f0772b"
+  },
+  {
+    "programmingLanguageName": "haskell",
+    "programmingLanguageColor": "#5e5086"
   },
   { "programmingLanguageName": "html", "programmingLanguageColor": "#e34c26" },
   { "programmingLanguageName": "ini", "programmingLanguageColor": "#d1dbe0" },
@@ -108,6 +122,7 @@
     "programmingLanguageName": "scheme",
     "programmingLanguageColor": "#1e4aec"
   },
+  { "programmingLanguageName": "scala", "programmingLanguageColor": "#c22d40" },
   { "programmingLanguageName": "scss", "programmingLanguageColor": "#c6538c" },
   { "programmingLanguageName": "shell", "programmingLanguageColor": "#89e051" },
   { "programmingLanguageName": "sol", "programmingLanguageColor": "#AA6746" },

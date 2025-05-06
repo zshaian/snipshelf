@@ -26,12 +26,14 @@ export default function FilterOptions() {
       params.delete('title');
     }
     replace(`?${params.toString()}`);
-  }, 500);
+  }, 300);
 
   const handleLanguageSelect = (language: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
-    if (language) {
+    if (language === 'all') {
+      params.delete('language');
+    } else if (language) {
       params.set('language', language);
     } else {
       params.delete('language');
@@ -45,10 +47,13 @@ export default function FilterOptions() {
         onValueChange={(language) => handleLanguageSelect(language)}
         defaultValue={searchParams.get('language')?.toString()}
       >
-        <SelectTrigger className="w-full lg:w-[250px] uppercase">
-          <SelectValue placeholder="Select a Language"></SelectValue>
+        <SelectTrigger className="w-full lg:w-[250px]">
+          <SelectValue placeholder="Select Language"></SelectValue>
         </SelectTrigger>
         <SelectContent className="capitalize">
+          <SelectItem value="all" className="uppercase">
+            show all
+          </SelectItem>
           {programmingLanguages.map((language) => (
             <SelectItem
               key={language.programmingLanguageName}

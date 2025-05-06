@@ -20,26 +20,26 @@ export default async function ProfilePage({
 }) {
   const { id } = await params;
   const { title = '', language = '', page = '1' } = await searchParams;
-  const snippetListQuery = new URLSearchParams({
+
+  const userProfile = getUserProfile({ id });
+
+  const usersnippetList = getSnippetList({
     title,
     language,
-    page,
+    page: Number(page),
+    filteredByUserId: id,
   });
-  const userProfile = getUserProfile({ userId: id });
 
-  // TODO: replace later with an actual API endpoint
-  const usersnippetList = getSnippetList({
-    snippetListURL: `https://snippets/user/${id}/?${snippetListQuery}`,
-  });
-  // TODO: replace later with an actual API endpoint
   const userPagination = getPagination({
-    paginationURL: `https://snipets/pagination/${id}/?${snippetListQuery}`,
+    title,
+    language,
+    filteredByUserId: id,
   });
 
   return (
     <>
       <Navbar />
-      <main className="p-8 flex flex-col gap-4">
+      <main className="p-8 pt-2 flex flex-col gap-4">
         <Suspense fallback={<UserProfileSkeleton />}>
           <UserProfile userProfileRequest={userProfile} />
         </Suspense>

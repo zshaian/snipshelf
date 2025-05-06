@@ -1,13 +1,9 @@
 import { getLanguageColor } from '@/lib';
 import programmingLanguages from '@/data/programming-languages.json';
 
-export default function LanguageBadge({
-  programmingLanguageName,
-}: {
-  programmingLanguageName: string;
-}) {
+export default function LanguageBadge({ language }: { language: string }) {
   const programmingLanguageColor = getLanguageColor(
-    programmingLanguageName,
+    language.toLowerCase(),
     programmingLanguages
   );
 
@@ -17,7 +13,7 @@ export default function LanguageBadge({
         className="h-3 w-3 rounded-full shadow-sm border border-input"
         style={{ backgroundColor: programmingLanguageColor }}
       ></span>
-      <span className="uppercase font-semibold">{programmingLanguageName}</span>
+      <span className="capitalize font-semibold">{language}</span>
     </>
   );
 }

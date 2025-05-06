@@ -8,9 +8,13 @@ export default function Hero() {
       {/* Hero Section Container */}
       <div className="h-[70vh] lg:h-screen flex flex-col justify-center items-center gap-6 md:gap-8">
         {/* Primary Heading Container */}
-        <h1 className="flex flex-col justify-center items-center text-[40px] md:text-7xl font-bold leading-tight">
+        {/* `leading-tight` makes the line height a bit more spacious for the smaller screens for better readability
+        and `leading-none` sets it to default for larger screens it gives a more compact look*/}
+        <h1 className="relative pb-3.5 flex flex-col justify-center items-center text-[40px] md:text-7xl font-bold leading-tight md:leading-none">
           <span>The Snippet Tool</span>
-          <span>For Developers</span>
+          {/* Gradient overlay div */}
+          <div className="absolute right-0 bottom-0 left-0 z-10 bg-gradient-to-t from-[var(--background)] to-transparent w-full h-[45%] dark:h-[60%] pointer-events-none" />
+          <span className="">For Developers</span>
         </h1>
         {/* Secondary Heading Container */}
         <h2 className="w-xs md:w-[476px] text-center text-2xl md:text-4xl font-regular text-[#a0a0a0]">

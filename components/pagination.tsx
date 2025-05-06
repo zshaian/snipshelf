@@ -27,7 +27,7 @@ export default function SnippetsPagination({
   const createPageURL = (pageNumber: string | number) => {
     const params = new URLSearchParams(searchParam);
     params.set('page', pageNumber.toString());
-    return `${pathName}/?${params.toString()}`;
+    return `${pathName}?${params.toString()}`;
   };
 
   return (
