@@ -1,7 +1,7 @@
 'use client';
 
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
@@ -26,6 +26,11 @@ export default function FilterLanguage() {
   const [value, setValue] = useState('');
   const searchParams = useSearchParams();
   const { replace } = useRouter();
+
+  useEffect(() => {
+    const currentLanguage = searchParams.get('language') || '';
+    setValue(currentLanguage);
+  }, []);
 
   const handleLanguageSelect = (language: string) => {
     console.log(language);
@@ -70,28 +75,34 @@ export default function FilterLanguage() {
             <CommandList>
               <CommandEmpty>No Language found.</CommandEmpty>
               <CommandGroup>
-                {programmingLanguages.map((language) => (
-                  <CommandItem
-                    key={language.programmingLanguageName}
-                    value={language.programmingLanguageName}
-                    onSelect={(currentValue) => {
-                      setValue(currentValue === value ? '' : currentValue);
-                      setOpen(false);
-                      handleLanguageSelect(currentValue);
-                    }}
-                    className="capitalize"
-                  >
-                    {language.programmingLanguageName}
-                    <Check
-                      className={cn(
-                        'ml-auto',
-                        value === language.programmingLanguageName
-                          ? 'opacity-100'
-                          : 'opacity-0'
-                      )}
-                    />
-                  </CommandItem>
-                ))}
+                {programmingLanguages
+                  .sort((a, b) =>
+                    a.programmingLanguageName.localeCompare(
+                      b.programmingLanguageName
+                    )
+                  )
+                  .map((language) => (
+                    <CommandItem
+                      key={language.programmingLanguageName}
+                      value={language.programmingLanguageName}
+                      onSelect={(currentValue) => {
+                        setValue(currentValue === value ? '' : currentValue);
+                        setOpen(false);
+                        handleLanguageSelect(currentValue);
+                      }}
+                      className="capitalize"
+                    >
+                      {language.programmingLanguageName}
+                      <Check
+                        className={cn(
+                          'ml-auto',
+                          value === language.programmingLanguageName
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                        )}
+                      />
+                    </CommandItem>
+                  ))}
               </CommandGroup>
             </CommandList>
           </Command>
