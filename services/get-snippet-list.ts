@@ -52,7 +52,7 @@ export async function getSnippetList({
 
   let snippetListQuery = supabase
     .from('snippets')
-    .select('*, profiles!inner(name, avatar)')
+    .select('*, profiles!inner(user_id, name, avatar)')
     .order('created_at', { ascending: false })
     .range(from, to);
 

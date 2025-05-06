@@ -12,7 +12,7 @@ export default function SnippetCard({
   description,
   tags,
   language,
-  profiles: { name, avatar },
+  profiles: { user_id, name, avatar },
   created_at,
   isBookmarked = false,
 }: SnippetCardProps) {
@@ -52,7 +52,10 @@ export default function SnippetCard({
 
       {/* author info */}
       <div className="p-4 flex items-center justify-between border-t border-input">
-        <div className="flex items-center gap-x-2">
+        <Link
+          className="flex items-center gap-x-2 group"
+          href={`/user/${user_id}`}
+        >
           <Image
             src={avatar}
             height={30}
@@ -60,8 +63,8 @@ export default function SnippetCard({
             alt="author profile image"
             className="rounded-full"
           />
-          <p className="capitalize">{name}</p>
-        </div>
+          <p className="capitalize group-hover:to-blue-400">{name}</p>
+        </Link>
         <p className="capitalize">{formatCreationDate(created_at)}</p>
       </div>
     </div>
