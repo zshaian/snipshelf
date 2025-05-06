@@ -31,7 +31,7 @@ export default function SnippetView({
   return (
     <main className="flex-1 flex flex-col items-center justify-center">
       <BackLink />
-      <section className="flex-1 w-full max-w-[800px] pt-4 pb-4 p-8 flex flex-col gap-2">
+      <section className="flex-1 w-full max-w-[800px] pt-4 pb-4 p-8 flex flex-col justify-center gap-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
