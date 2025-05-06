@@ -17,6 +17,7 @@ export default function UserSnippetLinks({ userId }: { userId: string }) {
           buttonVariants({ variant: isBookmarksPage ? 'ghost' : 'outline' }),
           `capitalize rounded-full cursor-pointer`
         )}
+        replace={true}
       >
         show all
       </Link>
@@ -26,6 +27,7 @@ export default function UserSnippetLinks({ userId }: { userId: string }) {
           buttonVariants({ variant: isBookmarksPage ? 'outline' : 'ghost' }),
           `capitalize rounded-full cursor-pointer`
         )}
+        replace={true}
       >
         bookmarks
       </Link>

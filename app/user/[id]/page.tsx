@@ -1,3 +1,4 @@
+import BackLink from '@/components/back-link';
 import Navbar from '@/components/navbar/navbar';
 import SnippetsPagination from '@/components/pagination';
 import FilterOptionsSkeleton from '@/components/skeleton/filter-snippets';
@@ -39,6 +40,7 @@ export default async function ProfilePage({
   return (
     <>
       <Navbar />
+      <BackLink />
       <main className="p-8 pt-2 flex flex-col gap-4">
         <Suspense fallback={<UserProfileSkeleton />}>
           <UserProfile userProfileRequest={userProfile} />
