@@ -42,7 +42,7 @@ export default function FilterOptions() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 lg:flex-row lg:justify-between">
+    <div className="mt-4 flex flex-col items-center gap-2 lg:flex-row lg:justify-between">
       <Select
         onValueChange={(language) => handleLanguageSelect(language)}
         defaultValue={searchParams.get('language')?.toString()}

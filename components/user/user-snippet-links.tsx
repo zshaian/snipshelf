@@ -12,7 +12,7 @@ export default function UserSnippetLinks({ userId }: { userId: string }) {
   return (
     <div className="flex gap-x-2">
       <Link
-        href={`/user/${userId}`}
+        href={`/snippets/${userId}`}
         className={cn(
           buttonVariants({ variant: isBookmarksPage ? 'ghost' : 'outline' }),
           `capitalize rounded-full cursor-pointer`
@@ -22,7 +22,7 @@ export default function UserSnippetLinks({ userId }: { userId: string }) {
         show all
       </Link>
       <Link
-        href={`/user/${userId}/bookmarks`}
+        href={`/snippets/${userId}/bookmarks`}
         className={cn(
           buttonVariants({ variant: isBookmarksPage ? 'outline' : 'ghost' }),
           `capitalize rounded-full cursor-pointer`

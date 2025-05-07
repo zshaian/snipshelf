@@ -31,7 +31,7 @@ export default function SnippetsPagination({
   };
 
   return (
-    <Pagination>
+    <Pagination className="p-4">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
