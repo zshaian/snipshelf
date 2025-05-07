@@ -11,12 +11,11 @@ export default function AddCodeSnippetCta() {
 
   // Check if the current path is either '/snippets/create' or '/snippets/edit', if its hide the CTA.
   const isOnCreateOrEditSnippetPage =
-    pathName.includes('/snippets/create') ||
-    pathName.includes('/snippets/edit');
+    pathName.includes('/create') || pathName.includes('/edit');
 
   return (
     <Link
-      href="/snippets/create"
+      href="/create"
       className={cn(
         buttonVariants({ variant: 'outline' }),
         `!py-1 !px-1 rounded-sm lg:!py-1 lg:!px-2 h-auto ${isOnCreateOrEditSnippetPage ? 'hidden' : 'flex'} items-center capitalize lg:rounded-sm`

@@ -7,7 +7,7 @@ import SnippetList from '@/components/snippets/snippet-list';
 import { getSnippetList, getPagination } from '@/services';
 import { Suspense } from 'react';
 
-export default async function ProfilePage({
+export default async function ProfileBookmarksPage({
   params,
   searchParams,
 }: {
@@ -21,13 +21,13 @@ export default async function ProfilePage({
     title,
     language,
     page: Number(page),
-    filteredByUserId: id,
+    filteredByUserBookmarks: id,
   });
 
   const userPagination = getPagination({
     title,
     language,
-    filteredByUserId: id,
+    filteredByUserBookmarks: id,
   });
 
   return (

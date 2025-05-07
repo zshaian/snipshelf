@@ -12,7 +12,7 @@ export default function UserProfile({
   const { name, avatar } = use(userProfileRequest);
 
   return (
-    <div className="p-4 flex items-center justify-start gap-2">
+    <div className="flex items-center justify-start gap-2">
       <Image
         src={avatar}
         height={30}

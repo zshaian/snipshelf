@@ -38,23 +38,31 @@ export async function updateSession(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  const protectedRoutes = ['/snippets/create'];
+  const protectedRoutes = ['/create'];
   const isProtected = protectedRoutes.some((route) =>
     request.nextUrl.pathname.startsWith(route)
   );
   const isUserLoggedInAndInLoginPage =
     user && request.nextUrl.pathname.startsWith('/login');
 
+  // redirect the user to the snippets page if they are already logged in
+  if (user && request.nextUrl.pathname === '/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/snippets';
+    return NextResponse.redirect(url);
+  }
+
+  // no current user and wants to navigate to the protected route, potentially respond by redirecting the user to the login page
   if (!user && isProtected) {
-    // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);
   }
-  // if the user is logged in and try to navigate to the login page, redirect them into the main page
+
+  // if the user is logged in and try to navigate to the login page, redirect them into the snippets page
   if (isUserLoggedInAndInLoginPage) {
     const url = request.nextUrl.clone();
-    url.pathname = '/';
+    url.pathname = '/snippets';
     return NextResponse.redirect(url);
   }
 

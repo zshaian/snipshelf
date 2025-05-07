@@ -31,7 +31,7 @@ export default async function User() {
 
   return (
     <Link
-      href={`/user/${user.id}`}
+      href={`/snippets/${user.id}`}
       className={cn(
         buttonVariants({ variant: 'ghost' }),
         'pl-2 pr-0 rounded-none'

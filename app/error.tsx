@@ -9,7 +9,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
   useEffect(() => {
     // Log the error in the client
     console.error(`Something Went Wrong ${error.message}`, error);
-  }, []);
+  }, [error]);
 
   return (
     <ErrorPage message={error.message}>
