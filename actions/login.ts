@@ -8,7 +8,8 @@ export async function login(providerName: 'google' | 'github') {
   const { data } = await supabase.auth.signInWithOAuth({
     provider: providerName,
     options: {
-      redirectTo: 'https://snipshelfit.vercel.app/auth/callback',
+      redirectTo:
+        'https://snipshelf-git-refactor-pages-web-dev-projects-vercel.vercel.app/auth/callback',
     },
   });
 
