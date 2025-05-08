@@ -9,7 +9,8 @@ import { use } from 'react';
 import ShareButton from '@/components/share-button';
 import BackLink from '@/components/back-link';
 import { formatCreationDate } from '@/lib';
-import BookmarkButton from '../bookmark-button';
+import BookmarkButton from '@/components/bookmark-button';
+import DeleteSnippetButton from '@/components/delete-snippet-button';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -23,7 +24,7 @@ export default function SnippetView({
     tags,
     language,
     code,
-    profiles: { name, avatar },
+    profiles: { user_id, name, avatar },
     created_at,
     isBookmarked = false,
   } = use(snippetInfoRequest);
@@ -68,6 +69,10 @@ export default function SnippetView({
         </div>
 
         <div className="flex">
+          <div>
+            <DeleteSnippetButton snippetId={id} userId={user_id} />
+          </div>
+
           <div className="ml-auto flex">
             <BookmarkButton snippetId={id} isBookmarked={isBookmarked} />
             <ShareButton id={id} />

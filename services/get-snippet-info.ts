@@ -10,7 +10,7 @@ export async function getSnippetInfo(id: string): Promise<SnippetProps> {
   }: { data: SnippetProps | null; error: PostgrestError | null } =
     await supabase
       .from('snippets')
-      .select('*, profiles!inner(name, avatar)')
+      .select('*, profiles!inner(user_id, name, avatar)')
       .eq('id', id)
       .single();
 
