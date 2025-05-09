@@ -1,6 +1,6 @@
 'use server';
 
-import { SnippetPropsForm } from '@/types';
+import type { CreateSnippetPropsForm } from '@/types';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 
@@ -10,7 +10,7 @@ export async function createSnippet({
   language,
   tags,
   code,
-}: SnippetPropsForm) {
+}: CreateSnippetPropsForm) {
   const supabase = await createClient();
   const {
     data: { user },

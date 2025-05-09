@@ -1,6 +1,6 @@
 import type { SnippetProps } from '@/types';
 import { createClient } from '@/utils/supabase/server';
-import { PostgrestError } from '@supabase/supabase-js';
+import type { PostgrestError } from '@supabase/supabase-js';
 
 export async function getSnippetInfo(id: string): Promise<SnippetProps> {
   const supabase = await createClient();
