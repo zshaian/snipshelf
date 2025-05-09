@@ -20,7 +20,7 @@ export default function SnippetCard({
     <div className="flex flex-col border border-input rounded-md shadow-md bg-zinc-100 dark:bg-zinc-900">
       <div className="p-4 flex flex-col gap-y-4">
         <Link
-          href={`/snippets/${id}`}
+          href={`/${id}`}
           className="text-xl font-bold capitalize hover:underline text-blue-400"
         >
           {title}
@@ -54,7 +54,7 @@ export default function SnippetCard({
       <div className="p-4 flex items-center justify-between border-t border-input">
         <Link
           className="flex items-center gap-x-2 group"
-          href={`/user/${user_id}`}
+          href={`/snippets/${user_id}`}
         >
           <Image
             src={avatar}

@@ -8,10 +8,10 @@ export default function BackLink() {
   const router = useRouter();
 
   return (
-    <div className="py-1 px-2 w-full border-b border-input">
+    <div className="my-4 w-full">
       <Button
         onClick={() => router.back()}
-        className="capitalize rounded-none cursor-pointer"
+        className="!px-1 capitalize rounded-none cursor-pointer"
         variant="ghost"
       >
         <FaChevronLeft />

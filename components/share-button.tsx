@@ -67,7 +67,7 @@ export default function ShareButton({ id }: { id: string }) {
             </Label>
             <Input
               id="link"
-              defaultValue={`${baseUrl}/snippets/${id}`}
+              defaultValue={`${baseUrl}/${id}`}
               readOnly
               ref={linkInputRef}
             />
