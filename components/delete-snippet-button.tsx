@@ -12,7 +12,7 @@ import {
   Button,
 } from '@/components/ui';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { deleteSnippet } from '@/actions/delete-snippet'; // server action
+import { deleteSnippet } from '@/actions/delete-snippet';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { FiLoader } from 'react-icons/fi';
@@ -55,7 +55,7 @@ export default function DeleteSnippetButton({
       <DialogTrigger asChild>
         <Button
           variant="ghost"
-          className="text-destructive border-none rounded-none cursor-pointer"
+          className="text-destructive rounded-none cursor-pointer"
           hidden={!isOwner}
         >
           <AiOutlineDelete />
