@@ -29,7 +29,7 @@ import SnippetEditor from '@/components/snippets/snippet-editor';
 import { useState } from 'react';
 import { createSnippet } from '@/actions';
 import { FiLoader } from 'react-icons/fi';
-import CharacterLimit from './character-limit';
+import CharacterLimit from '@/components/snippets/character-limit';
 
 const createSnippetFormSchema = z.object({
   title: z.string().max(60, 'max limit is 60').nonempty('Title is required.'),
@@ -72,6 +72,8 @@ export default function CreateSnippetForm() {
     } catch (error) {
       // TODO: handle this better with a toast or something similar.
       console.error(error);
+    } finally {
+      setPending(false);
     }
   };
 
