@@ -1,18 +1,15 @@
-import type { SnippetProps } from '@/types';
-import { notFound } from 'next/navigation';
+'use client';
+
+import type { EditSnippetPropsForm } from '@/types';
 import EditForm from '@/components/snippets/edit-form';
+import { use } from 'react';
 
-export default async function EditSnippetForm({
-  snippetId,
+export default function EditSnippetForm({
+  snippetInfoRequest,
 }: {
-  snippetId: string;
+  snippetInfoRequest: Promise<EditSnippetPropsForm>;
 }) {
-  // This is just an example endpoint will change it later.
-  const request = await fetch(`/https://snippets/${snippetId}`);
+  const snippetInfo = use(snippetInfoRequest);
 
-  if (!request.ok) notFound();
-
-  const snippetInfo: SnippetProps = await request.json();
-
-  return <EditForm snippetInfo={snippetInfo} />;
+  return <EditForm snippetInfoEditRequest={snippetInfo} />;
 }

@@ -11,6 +11,7 @@ import BackLink from '@/components/back-link';
 import { formatCreationDate } from '@/lib';
 import BookmarkButton from '@/components/bookmark-button';
 import DeleteSnippetButton from '@/components/delete-snippet-button';
+import EditSnippetLink from '@/components/edit-snippet-link';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -70,6 +71,7 @@ export default function SnippetView({
 
         <div className="flex">
           <div>
+            <EditSnippetLink snippetId={id} userId={user_id} />
             <DeleteSnippetButton snippetId={id} userId={user_id} />
           </div>
 

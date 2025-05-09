@@ -16,9 +16,14 @@ export type SnippetProps = {
   isBookmarked?: boolean;
 };
 
-export type SnippetPropsForm = Omit<
+export type CreateSnippetPropsForm = Omit<
   SnippetProps,
   'id' | 'created_at' | 'isBookmarked' | 'profiles'
+>;
+
+export type EditSnippetPropsForm = Omit<
+  SnippetProps,
+  'created_at' | 'isBookmarked' | 'profiles'
 >;
 
 export type ErrorPageProps = {

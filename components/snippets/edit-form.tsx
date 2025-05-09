@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-// import { InputTag } from '@/components/ui';
+import { InputTag } from '@/components/ui';
 import { z } from 'zod';
 import {
   Form,
@@ -26,42 +26,70 @@ import { buttonVariants } from '../ui/button';
 import SnippetLanguageBar from '@/components/snippets/snippet-language-bar';
 import programmingLanguages from '@/data/programming-languages.json';
 import SnippetEditor from '@/components/snippets/snippet-editor';
-import type { SnippetProps } from '@/types';
+import type { EditSnippetPropsForm } from '@/types';
+import { useState } from 'react';
+import { FiLoader } from 'react-icons/fi';
+import CharacterLimit from '@/components/snippets/character-limit';
+import { editSnippet } from '@/actions/edit-snippet';
 
-const createSnippetFormSchema = z.object({
-  title: z.string().nonempty('Title is required.'),
-  description: z.string(),
+const editSnippetFormSchema = z.object({
+  title: z.string().max(60, 'max limit is 60').nonempty('Title is required.'),
+  description: z.string().max(250, 'max limit is 250'),
   language: z.string().nonempty('please pick a language'),
   tags: z.array(z.string()),
-  codeEditorValue: z.string(),
+  code: z.string(),
 });
 
 export default function EditForm({
-  snippetInfo,
+  snippetInfoEditRequest,
 }: {
-  snippetInfo: SnippetProps;
+  snippetInfoEditRequest: EditSnippetPropsForm;
 }) {
-  const form = useForm<z.infer<typeof createSnippetFormSchema>>({
-    resolver: zodResolver(createSnippetFormSchema),
+  const form = useForm<z.infer<typeof editSnippetFormSchema>>({
+    resolver: zodResolver(editSnippetFormSchema),
     defaultValues: {
-      title: snippetInfo.title || '',
-      description: snippetInfo.description || '',
-      language: snippetInfo.language || '',
-      tags: snippetInfo.tags || [],
-      codeEditorValue: snippetInfo.code || '',
+      title: snippetInfoEditRequest.title || '',
+      description: snippetInfoEditRequest.description || '',
+      language: snippetInfoEditRequest.language || '',
+      tags: snippetInfoEditRequest.tags || [],
+      code: snippetInfoEditRequest.code || '',
     },
   });
 
   const programmingLanguageName = form.watch('language');
+  const titleLength = form.watch('title').length;
+  const descriptionLength = form.watch('description').length;
 
-  const onSubmit = (data: z.infer<typeof createSnippetFormSchema>) => {
-    console.log(data);
+  const [snippetTags, setSnippetTags] = useState<Array<string>>(
+    snippetInfoEditRequest.tags
+  );
+  const [pending, setPending] = useState<boolean>(false);
+
+  const onSubmit = async (data: z.infer<typeof editSnippetFormSchema>) => {
+    const { title, description, language, code } = data;
+    setPending(true);
+    try {
+      await editSnippet({
+        id: snippetInfoEditRequest.id,
+        title,
+        description,
+        language,
+        tags: snippetTags,
+        code,
+      });
+    } catch (error) {
+      // TODO: handle this better with a toast or something similar.
+      console.error(error);
+    } finally {
+      setPending(false);
+    }
   };
+
   return (
     <>
       <SnippetLanguageBar programmingLanguageName={programmingLanguageName} />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1">
+        <form className="flex-1" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="h-full flex flex-col-reverse lg:flex-row">
             <div className="flex flex-col flex-[0.5] border-b lg:border-r border-input lg:dark:border-none">
               <h1 className="text-3xl capitalize font-bold p-4 border-b border-input">
@@ -79,9 +107,13 @@ export default function EditForm({
                         <Input
                           {...field}
                           placeholder="e.g., Shuffle array, Sort array"
+                          maxLength={60}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <div className="flex items-center justify-between">
+                        <FormMessage />
+                        <CharacterLimit charCount={titleLength} limit={60} />
+                      </div>
                     </FormItem>
                   )}
                 />
@@ -98,9 +130,16 @@ export default function EditForm({
                           {...field}
                           placeholder="e.g., Code snippet for shuffling an array."
                           className="resize-none"
+                          maxLength={250}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <div className="flex items-center justify-between">
+                        <FormMessage />
+                        <CharacterLimit
+                          charCount={descriptionLength}
+                          limit={250}
+                        />
+                      </div>
                     </FormItem>
                   )}
                 />
@@ -140,21 +179,27 @@ export default function EditForm({
                 />
 
                 {/* snippet tags */}
-                {/* <InputTag /> */}
+                <InputTag
+                  snippetTags={snippetTags}
+                  setSnippetTags={setSnippetTags}
+                />
 
                 <div className="flex gap-2">
                   <Button
                     type="submit"
                     variant="outline"
                     className="cursor-pointer capitalize"
+                    disabled={pending}
                   >
-                    save code snippet
+                    {pending && <FiLoader className="animate-spin" />}
+                    <span>save code snippet</span>
                   </Button>
                   <Link
                     href="/"
                     className={cn(
                       buttonVariants({ variant: 'destructive' }),
-                      'cursor-pointer capitalize'
+                      'cursor-pointer capitalize',
+                      pending && 'pointer-events-none opacity-50'
                     )}
                   >
                     cancel
@@ -164,7 +209,7 @@ export default function EditForm({
             </div>
             <div className="px-4 flex-1 overflow-hidden lg:px-0">
               <FormField
-                name="codeEditorValue"
+                name="code"
                 control={form.control}
                 render={({ field }) => (
                   <SnippetEditor

@@ -23,11 +23,13 @@ export default function SnippetViewSkeleton() {
         </div>
         {/* code editor */}
         <Skeleton className="h-[200px] w-full" />
-        {/* bookmark and share button */}
         <div className="flex items-center justify-between">
-          <div>
+          {/* edit and delete button */}
+          <div className="flex gap-2">
+            <Skeleton className="h-[16px] w-[130px] rounded-none" />
             <Skeleton className="h-[16px] w-[130px] rounded-none" />
           </div>
+          {/* bookmark and share button */}
           <div className="flex gap-2 justify-end">
             <Skeleton className="h-[16px] w-[130px] rounded-none" />
             <Skeleton className="h-[16px] w-[130px] rounded-none" />
