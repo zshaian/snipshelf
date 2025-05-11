@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Pagination,
   PaginationContent,
@@ -10,24 +8,42 @@ import {
   PaginationPrevious,
 } from '@/components/ui';
 import { generatePagination } from '@/lib';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { use } from 'react';
+import { getPagination } from '@/services';
 
-export default function SnippetsPagination({
-  totalPagesRequest,
+export default async function SnippetsPagination({
+  title,
+  language,
+  page,
+  filteredByUserId,
+  filteredByUserBookmarks,
 }: {
-  totalPagesRequest: Promise<number>;
+  title: string;
+  language: string;
+  page: string;
+  filteredByUserId?: string;
+  filteredByUserBookmarks?: string;
 }) {
-  const totalPages = use(totalPagesRequest);
-  const pathName = usePathname();
-  const searchParam = useSearchParams();
-  const currentPage = Number(searchParam.get('page')) || 1;
+  const totalPages = await getPagination({ title, language });
+  const currentPage = Number(page) || 1;
   const allPages = generatePagination(currentPage, totalPages);
 
   const createPageURL = (pageNumber: string | number) => {
-    const params = new URLSearchParams(searchParam);
+    const params = new URLSearchParams({ title, language });
     params.set('page', pageNumber.toString());
-    return `${pathName}?${params.toString()}`;
+    if (!title) {
+      params.delete('title');
+    }
+    if (!language) {
+      params.delete('language');
+    }
+    if (filteredByUserId && !filteredByUserBookmarks) {
+      return `/snippets/${filteredByUserId}/?${params.toString()}`;
+    }
+    if (filteredByUserId && filteredByUserBookmarks) {
+      return `/snippets/${filteredByUserBookmarks}/bookmarks/?${params.toString()}`;
+    }
+
+    return `/snippets/?${params.toString()}`;
   };
 
   return (

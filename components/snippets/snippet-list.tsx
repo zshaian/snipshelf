@@ -1,15 +1,26 @@
-'use client';
-
 import SnippetCard from '@/components/snippets/card';
-import { SnippetCardProps } from '@/types';
-import { use } from 'react';
+import { getSnippetList } from '@/services';
 
-export default function SnippetList({
-  snippetListRequest,
+export default async function SnippetList({
+  title,
+  language,
+  page,
+  filteredByUserId,
+  filteredByUserBookmarks,
 }: {
-  snippetListRequest: Promise<Array<SnippetCardProps>>;
+  title: string;
+  language: string;
+  page: string;
+  filteredByUserId?: string;
+  filteredByUserBookmarks?: string;
 }) {
-  const snippetList = use(snippetListRequest);
+  const snippetList = await getSnippetList({
+    title,
+    language,
+    page: Number(page),
+    filteredByUserId,
+    filteredByUserBookmarks,
+  });
 
   return (
     <ul className="flex flex-col md:grid md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">

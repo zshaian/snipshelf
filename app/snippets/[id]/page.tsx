@@ -4,7 +4,6 @@ import PaginationSkeleton from '@/components/skeleton/pagination';
 import SnippetListSkeleton from '@/components/skeleton/snippet-list';
 import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
-import { getSnippetList, getPagination } from '@/services';
 import { Suspense } from 'react';
 
 export default async function ProfilePage({
@@ -17,19 +16,6 @@ export default async function ProfilePage({
   const { id } = await params;
   const { title = '', language = '', page = '1' } = await searchParams;
 
-  const usersnippetList = getSnippetList({
-    title,
-    language,
-    page: Number(page),
-    filteredByUserId: id,
-  });
-
-  const userPagination = getPagination({
-    title,
-    language,
-    filteredByUserId: id,
-  });
-
   return (
     <>
       <Suspense fallback={<FilterOptionsSkeleton />}>
@@ -37,11 +23,21 @@ export default async function ProfilePage({
       </Suspense>
 
       <Suspense fallback={<SnippetListSkeleton />}>
-        <SnippetList snippetListRequest={usersnippetList} />
+        <SnippetList
+          title={title}
+          language={language}
+          page={page}
+          filteredByUserId={id}
+        />
       </Suspense>
 
       <Suspense fallback={<PaginationSkeleton />}>
-        <SnippetsPagination totalPagesRequest={userPagination} />
+        <SnippetsPagination
+          title={title}
+          language={language}
+          page={page}
+          filteredByUserId={id}
+        />
       </Suspense>
     </>
   );
