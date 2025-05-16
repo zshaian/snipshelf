@@ -23,7 +23,10 @@ export default async function ProfileBookmarksPage({
         <FilterOptions />
       </Suspense>
 
-      <Suspense key={differKey} fallback={<SnippetListSkeleton />}>
+      <Suspense
+        key={`snippets-${differKey}`}
+        fallback={<SnippetListSkeleton />}
+      >
         <SnippetList
           title={title}
           language={language}
@@ -33,7 +36,10 @@ export default async function ProfileBookmarksPage({
         />
       </Suspense>
 
-      <Suspense key={differKey} fallback={<PaginationSkeleton />}>
+      <Suspense
+        key={`pagination-${differKey}`}
+        fallback={<PaginationSkeleton />}
+      >
         <SnippetsPagination
           title={title}
           language={language}
