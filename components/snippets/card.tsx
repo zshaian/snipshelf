@@ -28,7 +28,7 @@ export default function SnippetCard({
         <p>{description}</p>
 
         {/* snippet tags */}
-        <ul className="flex flex-wrap items-center gap-x-1">
+        <ul className="flex flex-wrap items-center gap-2">
           {tags.map((tag) => (
             <li
               key={tag}
