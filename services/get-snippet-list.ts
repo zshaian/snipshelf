@@ -56,11 +56,9 @@ export async function getSnippetList({
     .order('created_at', { ascending: false })
     .range(from, to);
 
-  if (filteredByUserId) {
+  if (filteredByUserId && !filteredByUserBookmarks) {
     snippetListQuery = snippetListQuery.eq('user_id', filteredByUserId);
-  }
-
-  if (filteredBookmarkedSnippetIds) {
+  } else if (filteredBookmarkedSnippetIds) {
     snippetListQuery = snippetListQuery.in('id', filteredBookmarkedSnippetIds);
   }
 
