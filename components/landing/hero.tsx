@@ -23,7 +23,7 @@ export default function Hero() {
         {/* Button Container */}
         <div className="w-xs md:max-w-full flex flex-col md:flex-row justify-center items-center gap-4">
           <Link
-            href="/snippets/create"
+            href="/create"
             className={cn(
               buttonVariants({ variant: 'default' }),
               'capitalize w-full md:w-auto'
@@ -32,7 +32,7 @@ export default function Hero() {
             Create code snippet
           </Link>
           <Link
-            href="#"
+            href="/snippets"
             className={cn(
               buttonVariants({ variant: 'secondary' }),
               'capitalize w-full md:w-auto'
