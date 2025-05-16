@@ -12,6 +12,7 @@ import { formatCreationDate } from '@/lib';
 import BookmarkButton from '@/components/bookmark-button';
 import DeleteSnippetButton from '@/components/delete-snippet-button';
 import EditSnippetLink from '@/components/edit-snippet-link';
+import Link from 'next/link';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -37,7 +38,10 @@ export default function SnippetView({
       </div>
       <section className="flex-1 w-full max-w-[800px] pt-4 pb-4 p-8 flex flex-col justify-center gap-2">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <Link
+            className="flex items-center gap-2"
+            href={`/snippets/${user_id}`}
+          >
             <Image
               src={avatar}
               alt=""
@@ -46,7 +50,7 @@ export default function SnippetView({
               className="rounded-full"
             />
             <p className="capitalize">{name}</p>
-          </div>
+          </Link>
           <p className="capitalize">{formatCreationDate(created_at)}</p>
         </div>
 
