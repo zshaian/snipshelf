@@ -15,6 +15,7 @@ export default async function ProfilePage({
 }) {
   const { id } = await params;
   const { title = '', language = '', page = '1' } = await searchParams;
+  const differKey = `${title}-${language}-${page}`;
 
   return (
     <>
@@ -22,7 +23,7 @@ export default async function ProfilePage({
         <FilterOptions />
       </Suspense>
 
-      <Suspense fallback={<SnippetListSkeleton />}>
+      <Suspense key={differKey} fallback={<SnippetListSkeleton />}>
         <SnippetList
           title={title}
           language={language}
@@ -31,7 +32,7 @@ export default async function ProfilePage({
         />
       </Suspense>
 
-      <Suspense fallback={<PaginationSkeleton />}>
+      <Suspense key={differKey} fallback={<PaginationSkeleton />}>
         <SnippetsPagination
           title={title}
           language={language}
