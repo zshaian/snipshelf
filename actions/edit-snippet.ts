@@ -24,5 +24,5 @@ export async function editSnippet({
     throw new Error(error.message);
   }
 
-  redirect('/');
+  redirect(`/${id}`);
 }
