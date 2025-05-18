@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { InputTag } from '@/components/ui';
 import { z } from 'zod';
 import {
   Form,
@@ -12,13 +11,18 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
   Textarea,
   Button,
+  InputTag,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
 } from '@/components/ui';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -31,6 +35,7 @@ import { useState } from 'react';
 import { FiLoader } from 'react-icons/fi';
 import CharacterLimit from '@/components/snippets/character-limit';
 import { editSnippet } from '@/actions/edit-snippet';
+import { Check, ChevronsUpDown } from 'lucide-react';
 
 const editSnippetFormSchema = z.object({
   title: z.string().max(60, 'max limit is 60').nonempty('Title is required.'),
@@ -151,28 +156,84 @@ export default function EditForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="capitalize">language</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="uppercase w-full">
-                            <SelectValue placeholder="select a programming language" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="uppercase">
-                          {programmingLanguages.map(
-                            ({ programmingLanguageName }) => (
-                              <SelectItem
-                                key={programmingLanguageName}
-                                value={programmingLanguageName.toLowerCase()}
-                              >
-                                {programmingLanguageName}
-                              </SelectItem>
-                            )
-                          )}
-                        </SelectContent>
-                      </Select>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant="outline"
+                              role="combobox"
+                              className="w-full capitalize justify-between"
+                            >
+                              {field.value
+                                ? programmingLanguages.find(
+                                    (language) =>
+                                      language.programmingLanguageName ===
+                                      field.value
+                                  )?.programmingLanguageName
+                                : 'Select Language'}
+                              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent
+                          className="w-full p-0"
+                          align="start"
+                          sideOffset={4}
+                          style={{
+                            width: 'var(--radix-popover-trigger-width)',
+                          }}
+                        >
+                          <Command>
+                            <CommandInput
+                              placeholder="Search Language"
+                              className="h-9"
+                            />
+                            <CommandList>
+                              <CommandEmpty>No Language Found</CommandEmpty>
+                              <CommandGroup>
+                                {programmingLanguages
+                                  .sort((a, b) =>
+                                    a.programmingLanguageName.localeCompare(
+                                      b.programmingLanguageName
+                                    )
+                                  )
+                                  .map((language) => (
+                                    <CommandItem
+                                      key={language.programmingLanguageName}
+                                      value={language.programmingLanguageName}
+                                      onSelect={() =>
+                                        form.setValue(
+                                          'language',
+                                          language.programmingLanguageName
+                                        )
+                                      }
+                                      className="capitalize cursor-pointer"
+                                    >
+                                      {language.programmingLanguageName}
+                                      <div className="ml-auto flex items-center gap-1">
+                                        <span
+                                          className="inline-block h-3 w-3 rounded-full shadow-sm border border-input"
+                                          style={{
+                                            backgroundColor:
+                                              language.programmingLanguageColor,
+                                          }}
+                                        ></span>
+                                        <Check
+                                          className={cn(
+                                            field.value ===
+                                              language.programmingLanguageName
+                                              ? 'inline-block'
+                                              : 'hidden'
+                                          )}
+                                        />
+                                      </div>
+                                    </CommandItem>
+                                  ))}
+                              </CommandGroup>
+                            </CommandList>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
                       <FormMessage />
                     </FormItem>
                   )}
