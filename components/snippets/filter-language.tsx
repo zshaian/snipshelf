@@ -5,20 +5,18 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import {
+  Button,
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from '@/components/ui';
 import programmingLanguages from '@/data/programming-languages.json';
 
 export default function FilterLanguage() {
@@ -89,11 +87,11 @@ export default function FilterLanguage() {
                         setOpen(false);
                         handleLanguageSelect(currentValue);
                       }}
-                      className="capitalize"
+                      className="capitalize cursor-pointer"
                     >
                       {language.programmingLanguageName}
                       <span
-                        className="ml-auto h-3 w-3 rounded-full shadow-sm border border-input"
+                        className="ml-auto inline-block h-3 w-3 rounded-full shadow-sm border border-input"
                         style={{
                           backgroundColor: language.programmingLanguageColor,
                         }}
