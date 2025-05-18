@@ -17,15 +17,15 @@ export default function SnippetCard({
   isBookmarked = false,
 }: SnippetCardProps) {
   return (
-    <div className="flex flex-col border border-input rounded-md shadow-md bg-zinc-100 dark:bg-zinc-900">
-      <div className="p-4 flex flex-col gap-y-4">
+    <div className="h-full flex flex-col justify-between border border-input rounded-md shadow-md bg-zinc-100 dark:bg-zinc-900">
+      <div className="p-4 flex flex-col flex-1 gap-y-4">
         <Link
           href={`/${id}`}
           className="text-xl font-bold capitalize hover:underline text-blue-400"
         >
           {title}
         </Link>
-        <p>{description}</p>
+        <p className="line-clamp-2">{description}</p>
 
         {/* snippet tags */}
         <ul className="flex flex-wrap items-center gap-2">
@@ -39,7 +39,7 @@ export default function SnippetCard({
           ))}
         </ul>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-auto">
           <p className="flex items-center gap-x-2">
             <LanguageBadge language={language} />
           </p>
