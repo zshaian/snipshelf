@@ -25,15 +25,14 @@ export default function FilterLanguage() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
   const searchParams = useSearchParams();
+  const currentLanguage = searchParams.get('language') || '';
   const { replace } = useRouter();
 
   useEffect(() => {
-    const currentLanguage = searchParams.get('language') || '';
     setValue(currentLanguage);
-  }, []);
+  }, [currentLanguage]);
 
   const handleLanguageSelect = (language: string) => {
-    console.log(language);
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
     if (language === params.get('language')) {
@@ -71,7 +70,7 @@ export default function FilterLanguage() {
           style={{ width: 'var(--radix-popover-trigger-width)' }}
         >
           <Command>
-            <CommandInput placeholder="Search framework..." className="h-9" />
+            <CommandInput placeholder="Search Language..." className="h-9" />
             <CommandList>
               <CommandEmpty>No Language found.</CommandEmpty>
               <CommandGroup>
@@ -93,12 +92,17 @@ export default function FilterLanguage() {
                       className="capitalize"
                     >
                       {language.programmingLanguageName}
+                      <span
+                        className="ml-auto h-3 w-3 rounded-full shadow-sm border border-input"
+                        style={{
+                          backgroundColor: language.programmingLanguageColor,
+                        }}
+                      ></span>
                       <Check
                         className={cn(
-                          'ml-auto',
                           value === language.programmingLanguageName
-                            ? 'opacity-100'
-                            : 'opacity-0'
+                            ? 'inline-block'
+                            : 'hidden'
                         )}
                       />
                     </CommandItem>

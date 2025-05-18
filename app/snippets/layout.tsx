@@ -10,7 +10,7 @@ export default async function SnippetsLayout({
     <>
       <Navbar />
       <CautionBlock />
-      <main className="px-8 flex flex-col gap-4">{children}</main>
+      <main className="mt-4 px-8 flex flex-col gap-4">{children}</main>
     </>
   );
 }
