@@ -21,7 +21,7 @@ export default function SnippetEditorReadOnly({
       language={language.toLowerCase()}
       value={code}
       options={{ readOnly: true, fontSize: 16 }}
-      className="w-full h-[250px]"
+      className="w-full h-[350px]"
       loading={<Skeleton className="w-full h-[250px] rounded-none" />}
     />
   );

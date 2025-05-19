@@ -36,7 +36,7 @@ export default function SnippetView({
       <div className="w-full px-4">
         <BackLink />
       </div>
-      <section className="flex-1 w-full max-w-[800px] pt-4 pb-4 p-8 flex flex-col justify-center gap-2">
+      <section className="flex-1 w-full max-w-[1000px] pt-4 pb-4 p-8 flex flex-col justify-center gap-2">
         <div className="flex items-center justify-between">
           <Link
             className="flex items-center gap-2"
