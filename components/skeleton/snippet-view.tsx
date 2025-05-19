@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui';
 export default function SnippetViewSkeleton() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-4">
-      <section className="p-4 lg:w-[800px] lg:p-8 flex flex-col gap-4">
+      <section className="p-4 lg:w-[1000px] lg:p-8 flex flex-col gap-4">
         <div className="flex items-center justify-between gap-2">
           {/* profile part */}
           <div className="flex items-center gap-2">
@@ -22,7 +22,7 @@ export default function SnippetViewSkeleton() {
           <Skeleton className="h-[16px] w-[100px] rounded-md" />
         </div>
         {/* code editor */}
-        <Skeleton className="h-[200px] w-full" />
+        <Skeleton className="h-[350px] w-full" />
         <div className="flex items-center justify-between">
           {/* edit and delete button */}
           <div className="flex gap-2">

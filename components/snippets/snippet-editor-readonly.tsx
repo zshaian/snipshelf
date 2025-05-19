@@ -22,7 +22,7 @@ export default function SnippetEditorReadOnly({
       value={code}
       options={{ readOnly: true, fontSize: 16 }}
       className="w-full h-[350px]"
-      loading={<Skeleton className="w-full h-[250px] rounded-none" />}
+      loading={<Skeleton className="w-full h-[350px] rounded-none" />}
     />
   );
 }
