@@ -24,7 +24,7 @@ export default function SignOutButton() {
       <Button
         type="submit"
         variant="outline"
-        className="w-full"
+        className="w-full cursor-pointer"
         disabled={pending}
       >
         {pending && <FiLoader className="animate-spin" />}
