@@ -42,14 +42,12 @@ export async function getPagination({
     .from('snippets')
     .select('*', { count: 'exact', head: true });
 
-  if (filteredByUserId) {
+  if (filteredByUserId && !filteredByUserBookmarks) {
     snippetListQueryCount = snippetListQueryCount.eq(
       'user_id',
       filteredByUserId
     );
-  }
-
-  if (filteredBookmarkedSnippetIds) {
+  } else if (filteredBookmarkedSnippetIds) {
     snippetListQueryCount = snippetListQueryCount.in(
       'id',
       filteredBookmarkedSnippetIds
