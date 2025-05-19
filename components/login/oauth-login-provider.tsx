@@ -23,7 +23,7 @@ export async function OAuthLoginProvider({
       <Button
         type="submit"
         variant="ghost"
-        className="py-2 h-auto w-auto cursor-pointer"
+        className="py-2 h-auto w-auto cursor-pointer rounded-full"
       >
         <ProviderIcon className="!size-8" />
         <span className="sr-only">{`log in using ${providerName}`}</span>
