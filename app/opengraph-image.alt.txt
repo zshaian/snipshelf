@@ -1,0 +1,1 @@
+Snipshelf is your personal code library. Create, categorize, and share code snippets with ease. Perfect for developers who want to keep their code tidy, searchable, and always within reach.
