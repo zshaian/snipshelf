@@ -22,6 +22,16 @@ export default async function SnippetList({
     filteredByUserBookmarks,
   });
 
+  if (snippetList.length === 0) {
+    return (
+      <div className="h-[300px] flex items-center justify-center">
+        <h1 className="text-2xl capitalize font-light text-zinc-800 dark:text-zinc-300">
+          no snippets found.
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <ul className="flex flex-col md:grid md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
       {snippetList.map((snippet) => (
