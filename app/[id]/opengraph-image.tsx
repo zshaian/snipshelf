@@ -39,7 +39,6 @@ export default async function Image({ params }: { params: { id: string } }) {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              marginRight: 64,
             }}
           >
             <div
