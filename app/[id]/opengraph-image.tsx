@@ -1,5 +1,7 @@
+import { getLanguageColor } from '@/lib';
 import { getSnippetInfoMetadata } from '@/services';
 import { ImageResponse } from 'next/og';
+import programmingLanguages from '@/data/programming-languages.json';
 
 export const size = {
   width: 1200,
@@ -20,37 +22,87 @@ export default async function Image({ params }: { params: { id: string } }) {
           padding: 40,
           height: '100%',
           width: '100%',
+          backgroundColor: 'black',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'black',
         }}
       >
-        <img
-          src="https://snipshelfit.vercel.app/images/logo_md.svg"
-          height={120}
-          width={120}
-          alt="logo"
-        />
-        <div style={{ fontSize: 64, fontWeight: 'bold' }}>
-          {snippetInfo.title || 'Untitled Snippet'}
+        <div style={{ display: 'flex', flex: '1' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginRight: 64,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 64,
+                fontWeight: 'bold',
+                textTransform: 'capitalize',
+              }}
+            >
+              {snippetInfo.title || 'Untitled Snippet'}
+            </div>
+
+            <div style={{ marginTop: 16, fontSize: 32 }}>
+              {snippetInfo.description || 'No Description'}
+            </div>
+
+            <div
+              style={{
+                marginTop: 16,
+                fontSize: 32,
+                fontWeight: 'bold',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  height: 60,
+                  width: 60,
+                  borderRadius: '50%',
+                  backgroundColor: getLanguageColor(
+                    snippetInfo.language,
+                    programmingLanguages
+                  ),
+                }}
+              ></div>
+              <div>{snippetInfo.language || 'No Language'}</div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              fontSize: 32,
+              fontWeight: 'bold',
+            }}
+          >
+            <img
+              src={
+                snippetInfo.profiles.avatar ||
+                'https://snipshelfit.vercel.app/images/logo_md.svg'
+              }
+              height={250}
+              width={250}
+              style={{ borderRadius: '10px' }}
+            />
+            <div>{snippetInfo.profiles.name || 'No Name'}</div>
+          </div>
         </div>
-        <div style={{ fontSize: 40, marginTop: 10 }}>
-          {snippetInfo.description || 'No Description'}
-        </div>
-        <div style={{ display: 'flex', marginTop: 20 }}>
+
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <img
-            src={
-              snippetInfo.profiles.avatar ||
-              'https://snipshelfit.vercel.app/images/logo_md.svg'
-            }
-            height={80}
-            width={80}
-            alt="author image"
+            src="https://snipshelfit.vercel.app/images/logo_md.svg"
+            height={120}
+            width={120}
           />
-          <div style={{ marginLeft: 10, fontSize: 40 }}>
-            {snippetInfo.profiles.name || 'No Author'}
+          <div style={{ marginLeft: 32, fontSize: 32, fontWeight: 'bold' }}>
+            Snipshelf
           </div>
         </div>
       </div>
