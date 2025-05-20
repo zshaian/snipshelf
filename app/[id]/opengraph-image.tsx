@@ -29,14 +29,14 @@ export default async function Image({ params }: { params: { id: string } }) {
       >
         <img
           src="https://snipshelfit.vercel.app/images/logo_md.svg"
-          height={60}
-          width={60}
+          height={120}
+          width={120}
           alt="logo"
         />
-        <div style={{ fontSize: 32, fontWeight: 'bold' }}>
+        <div style={{ fontSize: 64, fontWeight: 'bold' }}>
           {snippetInfo.title || 'Untitled Snippet'}
         </div>
-        <div style={{ fontSize: 18, marginTop: 10 }}>
+        <div style={{ fontSize: 40, marginTop: 10 }}>
           {snippetInfo.description || 'No Description'}
         </div>
         <div style={{ display: 'flex', marginTop: 20 }}>
@@ -45,11 +45,11 @@ export default async function Image({ params }: { params: { id: string } }) {
               snippetInfo.profiles.avatar ||
               'https://snipshelfit.vercel.app/images/logo_md.svg'
             }
-            height={30}
-            width={30}
+            height={80}
+            width={80}
             alt="author image"
           />
-          <div style={{ marginLeft: 10 }}>
+          <div style={{ marginLeft: 10, fontSize: 40 }}>
             {snippetInfo.profiles.name || 'No Author'}
           </div>
         </div>
