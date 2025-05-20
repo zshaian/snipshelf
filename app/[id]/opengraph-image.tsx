@@ -39,6 +39,8 @@ export default async function Image({ params }: { params: { id: string } }) {
             style={{
               display: 'flex',
               flexDirection: 'column',
+              maxWidth: '70%',
+              wordWrap: 'break-word',
             }}
           >
             <div
@@ -46,9 +48,6 @@ export default async function Image({ params }: { params: { id: string } }) {
                 fontSize: 64,
                 fontWeight: 'bold',
                 textTransform: 'capitalize',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: 'block',
               }}
             >
               {snippetInfo.title || 'Untitled Snippet'}
@@ -58,9 +57,6 @@ export default async function Image({ params }: { params: { id: string } }) {
               style={{
                 marginTop: 16,
                 fontSize: 32,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: 'block',
               }}
             >
               {snippetInfo.description || 'No Description'}
