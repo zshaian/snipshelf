@@ -27,7 +27,14 @@ export default async function Image({ params }: { params: { id: string } }) {
           flexDirection: 'column',
         }}
       >
-        <div style={{ display: 'flex', flex: '1' }}>
+        <div
+          style={{
+            width: '100%',
+            display: 'flex',
+            flex: '1',
+            justifyContent: 'space-between',
+          }}
+        >
           <div
             style={{
               display: 'flex',
@@ -69,7 +76,9 @@ export default async function Image({ params }: { params: { id: string } }) {
                   ),
                 }}
               ></div>
-              <div>{snippetInfo.language || 'No Language'}</div>
+              <div style={{ textTransform: 'capitalize', marginLeft: 16 }}>
+                {snippetInfo.language || 'No Language'}
+              </div>
             </div>
           </div>
 
@@ -91,7 +100,9 @@ export default async function Image({ params }: { params: { id: string } }) {
               width={250}
               style={{ borderRadius: '10px' }}
             />
-            <div>{snippetInfo.profiles.name || 'No Name'}</div>
+            <div style={{ marginTop: 16 }}>
+              {snippetInfo.profiles.name || 'No Name'}
+            </div>
           </div>
         </div>
 
@@ -101,7 +112,7 @@ export default async function Image({ params }: { params: { id: string } }) {
             height={120}
             width={120}
           />
-          <div style={{ marginLeft: 32, fontSize: 32, fontWeight: 'bold' }}>
+          <div style={{ marginLeft: 16, fontSize: 32, fontWeight: 'bold' }}>
             Snipshelf
           </div>
         </div>
