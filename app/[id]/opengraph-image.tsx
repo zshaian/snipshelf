@@ -1,4 +1,4 @@
-import { getSnippetInfo } from '@/services';
+import { getSnippetInfoMetadata } from '@/services';
 import { ImageResponse } from 'next/og';
 
 export const size = {
@@ -10,7 +10,7 @@ export const contentType = 'image/png';
 
 export default async function Image({ params }: { params: { id: string } }) {
   const { id } = params;
-  const snippetInfo = await getSnippetInfo(id);
+  const snippetInfo = await getSnippetInfoMetadata(id);
 
   return new ImageResponse(
     (
