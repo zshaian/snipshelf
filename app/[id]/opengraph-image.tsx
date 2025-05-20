@@ -46,12 +46,23 @@ export default async function Image({ params }: { params: { id: string } }) {
                 fontSize: 64,
                 fontWeight: 'bold',
                 textTransform: 'capitalize',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: 'block',
               }}
             >
               {snippetInfo.title || 'Untitled Snippet'}
             </div>
 
-            <div style={{ marginTop: 16, fontSize: 32 }}>
+            <div
+              style={{
+                marginTop: 16,
+                fontSize: 32,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: 'block',
+              }}
+            >
               {snippetInfo.description || 'No Description'}
             </div>
 
