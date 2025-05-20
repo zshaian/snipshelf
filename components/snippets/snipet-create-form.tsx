@@ -38,7 +38,7 @@ import CharacterLimit from '@/components/snippets/character-limit';
 
 const createSnippetFormSchema = z.object({
   title: z.string().max(60, 'max limit is 60').nonempty('Title is required.'),
-  description: z.string().max(250, 'max limit is 250'),
+  description: z.string().max(100, 'max limit is 100'),
   language: z.string().nonempty('please pick a language'),
   tags: z.array(z.string()),
   code: z.string(),
@@ -127,14 +127,14 @@ export default function CreateSnippetForm() {
                           {...field}
                           placeholder="e.g., Code snippet for shuffling an array."
                           className="resize-none"
-                          maxLength={250}
+                          maxLength={100}
                         />
                       </FormControl>
                       <div className="flex items-center justify-between">
                         <FormMessage />
                         <CharacterLimit
                           charCount={descriptionLength}
-                          limit={250}
+                          limit={100}
                         />
                       </div>
                     </FormItem>
