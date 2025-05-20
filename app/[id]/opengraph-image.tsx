@@ -73,8 +73,8 @@ export default async function Image({ params }: { params: { id: string } }) {
             >
               <div
                 style={{
-                  height: 60,
-                  width: 60,
+                  height: 30,
+                  width: 30,
                   borderRadius: '50%',
                   backgroundColor: getLanguageColor(
                     snippetInfo.language,
