@@ -21,11 +21,11 @@ export default function SnippetCard({
       <div className="p-4 flex flex-col flex-1 gap-y-4">
         <Link
           href={`/${id}`}
-          className="text-xl font-bold capitalize hover:underline text-blue-400"
+          className="text-xl font-bold capitalize hover:underline text-blue-400 truncate"
         >
           {title}
         </Link>
-        <p className="line-clamp-2">{description}</p>
+        <p className="line-clamp-2 break-words">{description}</p>
 
         {/* snippet tags */}
         <ul className="flex flex-wrap items-center gap-2">

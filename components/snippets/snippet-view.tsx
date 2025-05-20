@@ -55,7 +55,7 @@ export default function SnippetView({
         </div>
 
         <p className="text-xl font-bold capitalize">{title}</p>
-        <p className="mb-1">{description} </p>
+        <p className="mb-1 break-words">{description} </p>
 
         <ul className="flex gap-1 text-sm capitalize">
           {tags.map((item) => (
