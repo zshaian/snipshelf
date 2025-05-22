@@ -1,22 +1,21 @@
-'use client';
-
-import { Button } from '@/components/ui';
+import { cn } from '@/lib';
+import Link from 'next/link';
 import { FaChevronLeft } from 'react-icons/fa6';
-import { useRouter } from 'next/navigation';
+import { buttonVariants } from '@/components/ui/button';
 
 export default function BackLink() {
-  const router = useRouter();
-
   return (
     <div className="my-4 w-full">
-      <Button
-        onClick={() => router.back()}
-        className="!px-1 capitalize rounded-none cursor-pointer"
-        variant="ghost"
+      <Link
+        href={'/snippets'}
+        className={cn(
+          buttonVariants({ variant: 'ghost' }),
+          '!px-1 capitalize rounded-none cursor-pointer'
+        )}
       >
         <FaChevronLeft />
         <span>back</span>
-      </Button>
+      </Link>
     </div>
   );
 }
