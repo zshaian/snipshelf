@@ -18,19 +18,18 @@ export default function Hero() {
         </h2>
         {/* Button Container */}
         <div className="w-xs md:max-w-full flex flex-col md:flex-row justify-center items-center gap-4">
-          {/* Rotating Border Wrapper */}
-          <div className="gradient-border-wrapper">
-            <div className="absolute -inset-1 rounded-md border-2 border-primary animate-spin-slow opacity-50 blur-sm" />
-            <Link
-              href="/snippets/create"
-              className={cn(
-                buttonVariants({ variant: 'default' }),
-                'capitalize w-full md:w-auto relative z-10'
-              )}
-            >
-              Create code snippet
-            </Link>
-          </div>
+          <Link
+            href="/snippets/create"
+            className={cn(
+              buttonVariants({
+                variant: 'magic',
+              }),
+              'capitalize w-full md:w-auto relative z-10 '
+            )}
+          >
+            Create code snippet
+          </Link>
+
           <Link
             href="#"
             className={cn(
