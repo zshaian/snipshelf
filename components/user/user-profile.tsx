@@ -9,18 +9,18 @@ export default function UserProfile({
 }: {
   userProfileRequest: Promise<UserProfile>;
 }) {
-  const { userName, userImage } = use(userProfileRequest);
+  const { name, avatar } = use(userProfileRequest);
 
   return (
     <div className="p-4 flex items-center justify-start gap-2">
       <Image
-        src={userImage}
+        src={avatar}
         height={30}
         width={30}
         alt=""
         className="rounded-full"
       />
-      <p className="capitalize">{userName}</p>
+      <p className="capitalize">{name}</p>
     </div>
   );
 }

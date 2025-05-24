@@ -26,13 +26,17 @@ import { buttonVariants } from '../ui/button';
 import SnippetLanguageBar from '@/components/snippets/snippet-language-bar';
 import programmingLanguages from '@/data/programming-languages.json';
 import SnippetEditor from '@/components/snippets/snippet-editor';
+import { useState } from 'react';
+import { createSnippet } from '@/actions';
+import { FiLoader } from 'react-icons/fi';
+import CharacterLimit from './character-limit';
 
 const createSnippetFormSchema = z.object({
-  title: z.string().nonempty('Title is required.'),
-  description: z.string(),
+  title: z.string().max(60, 'max limit is 60').nonempty('Title is required.'),
+  description: z.string().max(250, 'max limit is 250'),
   language: z.string().nonempty('please pick a language'),
   tags: z.array(z.string()),
-  codeEditorValue: z.string(),
+  code: z.string(),
 });
 
 export default function CreateSnippetForm() {
@@ -43,21 +47,39 @@ export default function CreateSnippetForm() {
       description: '',
       language: 'javascript',
       tags: [],
-      codeEditorValue: '',
+      code: '',
     },
   });
 
   const programmingLanguageName = form.watch('language');
+  const titleLength = form.watch('title').length;
+  const descriptionLength = form.watch('description').length;
 
-  const onSubmit = (data: z.infer<typeof createSnippetFormSchema>) => {
-    console.log(data);
+  const [snippetTags, setSnippetTags] = useState<Array<string>>([]);
+  const [pending, setPending] = useState<boolean>(false);
+
+  const onSubmit = async (data: z.infer<typeof createSnippetFormSchema>) => {
+    const { title, description, language, code } = data;
+    setPending(true);
+    try {
+      await createSnippet({
+        title,
+        description,
+        language,
+        tags: snippetTags,
+        code,
+      });
+    } catch (error) {
+      // TODO: handle this better with a toast or something similar.
+      console.error(error);
+    }
   };
 
   return (
     <>
       <SnippetLanguageBar programmingLanguageName={programmingLanguageName} />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1">
+        <form className="flex-1" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="h-full flex flex-col-reverse lg:flex-row">
             <div className="flex flex-col flex-[0.5] border-b lg:border-r border-input lg:dark:border-none">
               <h1 className="text-3xl capitalize font-bold p-4 border-b border-input">
@@ -75,9 +97,13 @@ export default function CreateSnippetForm() {
                         <Input
                           {...field}
                           placeholder="e.g., Shuffle array, Sort array"
+                          maxLength={60}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <div className="flex items-center justify-between">
+                        <FormMessage />
+                        <CharacterLimit charCount={titleLength} limit={60} />
+                      </div>
                     </FormItem>
                   )}
                 />
@@ -94,9 +120,16 @@ export default function CreateSnippetForm() {
                           {...field}
                           placeholder="e.g., Code snippet for shuffling an array."
                           className="resize-none"
+                          maxLength={250}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <div className="flex items-center justify-between">
+                        <FormMessage />
+                        <CharacterLimit
+                          charCount={descriptionLength}
+                          limit={250}
+                        />
+                      </div>
                     </FormItem>
                   )}
                 />
@@ -136,21 +169,27 @@ export default function CreateSnippetForm() {
                 />
 
                 {/* snippet tags */}
-                <InputTag />
+                <InputTag
+                  snippetTags={snippetTags}
+                  setSnippetTags={setSnippetTags}
+                />
 
                 <div className="flex gap-2">
                   <Button
                     type="submit"
                     variant="outline"
                     className="cursor-pointer capitalize"
+                    disabled={pending}
                   >
-                    save code snippet
+                    {pending && <FiLoader className="animate-spin" />}
+                    <span>save code snippet</span>
                   </Button>
                   <Link
                     href="/"
                     className={cn(
                       buttonVariants({ variant: 'destructive' }),
-                      'cursor-pointer capitalize'
+                      'cursor-pointer capitalize',
+                      pending && 'pointer-events-none opacity-50'
                     )}
                   >
                     cancel
@@ -160,7 +199,7 @@ export default function CreateSnippetForm() {
             </div>
             <div className="px-4 flex-1 overflow-hidden lg:px-0">
               <FormField
-                name="codeEditorValue"
+                name="code"
                 control={form.control}
                 render={({ field }) => (
                   <SnippetEditor

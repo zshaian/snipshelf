@@ -2,13 +2,14 @@
 
 import Image from 'next/image';
 
-import { CiBookmark } from 'react-icons/ci';
-import { IoShareOutline } from 'react-icons/io5';
-import { Button } from '@/components/ui';
 import SnippetEditorReadOnly from '@/components/snippets/snippet-editor-readonly';
 import SnippetLanguageBarCopy from '@/components/snippets/snippet-language-bar-copy';
 import type { SnippetProps } from '@/types';
 import { use } from 'react';
+import ShareButton from '@/components/share-button';
+import BackLink from '@/components/back-link';
+import { formatCreationDate } from '@/lib';
+import BookmarkButton from '../bookmark-button';
 
 export default function SnippetView({
   snippetInfoRequest,
@@ -16,37 +17,37 @@ export default function SnippetView({
   snippetInfoRequest: Promise<SnippetProps>;
 }) {
   const {
-    // TODO: use the id props later for bookmarking of the code snippet.
-    // id,
+    id,
     title,
     description,
     tags,
-    programmingLanguageName,
+    language,
     code,
-    authorImage,
-    authorName,
-    dateCreated,
+    profiles: { name, avatar },
+    created_at,
+    isBookmarked = false,
   } = use(snippetInfoRequest);
 
   return (
-    <main className="flex-1 flex items-center justify-center gap-4">
-      <section className="min-w-auto w-[800px] p-8 flex flex-col gap-4">
+    <main className="flex-1 flex flex-col items-center justify-center">
+      <BackLink />
+      <section className="flex-1 w-full max-w-[800px] pt-4 pb-4 p-8 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src={authorImage}
+              src={avatar}
               alt=""
               height={30}
               width={30}
               className="rounded-full"
             />
-            <p className="capitalize">{authorName}</p>
+            <p className="capitalize">{name}</p>
           </div>
-          <p className="capitalize">{dateCreated}</p>
+          <p className="capitalize">{formatCreationDate(created_at)}</p>
         </div>
 
         <p className="text-xl font-bold capitalize">{title}</p>
-        <p>{description} </p>
+        <p className="mb-1">{description} </p>
 
         <ul className="flex gap-1 text-sm capitalize">
           {tags.map((item) => (
@@ -59,33 +60,15 @@ export default function SnippetView({
           ))}
         </ul>
 
-        <div className="flex flex-col overflow-hidden">
-          <SnippetLanguageBarCopy
-            codeToCopy={code}
-            programmingLanguageName={programmingLanguageName}
-          />
-          <SnippetEditorReadOnly
-            code={code}
-            programmingLanguageName={programmingLanguageName}
-          />
+        <div className="flex flex-col overflow-hidden shadow-md">
+          <SnippetLanguageBarCopy codeToCopy={code} language={language} />
+          <SnippetEditorReadOnly code={code} language={language} />
         </div>
 
         <div className="flex">
           <div className="ml-auto flex">
-            <Button
-              className="flex gap-2 rounded-none border-r border-input capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <CiBookmark />
-              <span>bookmark</span>
-            </Button>
-            <Button
-              className="flex gap-2 rounded-none capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <IoShareOutline />
-              <span>share</span>
-            </Button>
+            <BookmarkButton snippetId={id} isBookmarked={isBookmarked} />
+            <ShareButton id={id} />
           </div>
         </div>
       </section>

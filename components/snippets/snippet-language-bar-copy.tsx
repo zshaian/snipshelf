@@ -8,12 +8,12 @@ import LanguageBadge from '@/components/language-badge';
 
 type SnippetLanguageBarCopyProps = {
   codeToCopy: string;
-  programmingLanguageName: string;
+  language: string;
 };
 
 export default function SnippetLanguageBarCopy({
   codeToCopy,
-  programmingLanguageName,
+  language,
 }: SnippetLanguageBarCopyProps) {
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ export default function SnippetLanguageBarCopy({
   return (
     <div className="py-2 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 relative">
       <div className="flex items-center gap-2">
-        <LanguageBadge programmingLanguageName={programmingLanguageName} />
+        <LanguageBadge language={language} />
       </div>
       <Button
         variant="outline"

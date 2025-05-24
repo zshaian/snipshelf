@@ -8,7 +8,7 @@ import FilterOptions from '@/components/snippets/filter-options';
 import SnippetList from '@/components/snippets/snippet-list';
 import UserProfile from '@/components/user/user-profile';
 import UserSnippetLinks from '@/components/user/user-snippet-links';
-import { getUserProfile, getSnippetList, getPagination } from '@/services';
+import { getSnippetList, getPagination, getUserProfile } from '@/services';
 import { Suspense } from 'react';
 
 export default async function ProfileBookmarksPage({
@@ -20,21 +20,20 @@ export default async function ProfileBookmarksPage({
 }) {
   const { id } = await params;
   const { title = '', language = '', page = '1' } = await searchParams;
-  const snippetListQuery = new URLSearchParams({
+
+  const userProfile = getUserProfile({ id });
+
+  const usersnippetList = getSnippetList({
     title,
     language,
-    page,
-  });
-  const userProfile = getUserProfile({ userId: id });
-
-  // TODO: replace later with an actual API endpoint
-  const usersnippetList = getSnippetList({
-    snippetListURL: `https://snippets/user/${id}/bookmarks/?${snippetListQuery}`,
+    page: Number(page),
+    filteredByUserBookmarks: id,
   });
 
-  // TODO: replace later with an actual API endpoint
   const userPagination = getPagination({
-    paginationURL: `https://snipets/pagination/${id}/bookmarks/?${snippetListQuery}`,
+    title,
+    language,
+    filteredByUserBookmarks: id,
   });
 
   return (

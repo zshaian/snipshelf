@@ -29,6 +29,7 @@ export default function LoginForm() {
   const onSubmit = (data: z.infer<typeof loginFormSchema>) => console.log(data);
 
   return (
+    // temporary disabled the form for now
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
@@ -41,13 +42,13 @@ export default function LoginForm() {
             <FormItem>
               <FormLabel className="capitalize">email</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} disabled />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="uppercase cursor-pointer">
+        <Button type="submit" className="uppercase cursor-pointer" disabled>
           login
         </Button>
       </form>

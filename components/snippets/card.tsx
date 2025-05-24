@@ -1,23 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui';
-import { IoShareSocialOutline } from 'react-icons/io5';
-import { CiBookmark } from 'react-icons/ci';
 import LanguageBadge from '@/components/language-badge';
 import type { SnippetCardProps } from '@/types';
+import ShareButton from '@/components/share-button';
+import BookmarkButton from '@/components/bookmark-button';
+import { formatCreationDate } from '@/lib';
 
 export default function SnippetCard({
   id,
   title,
   description,
   tags,
-  programmingLanguageName,
-  authorName,
-  authorImage,
-  dateCreated,
+  language,
+  profiles: { name, avatar },
+  created_at,
+  isBookmarked = false,
 }: SnippetCardProps) {
   return (
-    <li className="flex flex-col border border-input rounded-md">
+    <div className="flex flex-col border border-input rounded-md shadow-md bg-zinc-100 dark:bg-zinc-900">
       <div className="p-4 flex flex-col gap-y-4">
         <Link
           href={`/snippets/${id}`}
@@ -41,23 +41,11 @@ export default function SnippetCard({
 
         <div className="flex items-center justify-between">
           <p className="flex items-center gap-x-2">
-            <LanguageBadge programmingLanguageName={programmingLanguageName} />
+            <LanguageBadge language={language} />
           </p>
           <div className="flex">
-            <Button
-              className="flex gap-2 rounded-none border-r border-input capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <CiBookmark />
-              <span>bookmark</span>
-            </Button>
-            <Button
-              className="flex gap-2 rounded-none capitalize cursor-pointer"
-              variant="ghost"
-            >
-              <IoShareSocialOutline />
-              <span>share</span>
-            </Button>
+            <BookmarkButton snippetId={id} isBookmarked={isBookmarked} />
+            <ShareButton id={id} />
           </div>
         </div>
       </div>
@@ -66,16 +54,16 @@ export default function SnippetCard({
       <div className="p-4 flex items-center justify-between border-t border-input">
         <div className="flex items-center gap-x-2">
           <Image
-            src={authorImage}
+            src={avatar}
             height={30}
             width={30}
             alt="author profile image"
             className="rounded-full"
           />
-          <p className="capitalize">{authorName}</p>
+          <p className="capitalize">{name}</p>
         </div>
-        <p className="capitalize">{dateCreated}</p>
+        <p className="capitalize">{formatCreationDate(created_at)}</p>
       </div>
-    </li>
+    </div>
   );
 }

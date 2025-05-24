@@ -1,13 +1,13 @@
 'use client';
 
 import SnippetCard from '@/components/snippets/card';
-import { SnippetProps } from '@/types';
+import { SnippetCardProps } from '@/types';
 import { use } from 'react';
 
 export default function SnippetList({
   snippetListRequest,
 }: {
-  snippetListRequest: Promise<Array<SnippetProps>>;
+  snippetListRequest: Promise<Array<SnippetCardProps>>;
 }) {
   const snippetList = use(snippetListRequest);
 
