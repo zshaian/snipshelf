@@ -25,12 +25,15 @@ export default function Hero() {
           <Link
             href="/create"
             className={cn(
-              buttonVariants({ variant: 'default' }),
-              'capitalize w-full md:w-auto'
+              buttonVariants({
+                variant: 'magic',
+              }),
+              'capitalize w-full md:w-auto relative z-10 '
             )}
           >
             Create code snippet
           </Link>
+
           <Link
             href="/snippets"
             className={cn(
