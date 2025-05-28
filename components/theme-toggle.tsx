@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { Checkbox, Label } from '@/components/ui';
+import { Checkbox, Label, Skeleton } from '@/components/ui';
 import { CiDark, CiLight } from 'react-icons/ci';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
@@ -18,7 +18,13 @@ export default function ThemeToggle() {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <div className="px-2 border-r border-input size-9 flex items-center justify-center">
+        <Skeleton className=" rounded-full size-4" />
+      </div>
+    );
+  }
 
   return (
     <div>
